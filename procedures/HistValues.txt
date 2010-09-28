@@ -1,0 +1,46 @@
+0: Position x-coordinate(self)
+1: Position y-coordinate(self)
+2: Position z-coordinate(self)
+
+3: Velocity x-coordinate(self)
+4: Velocity y-coordinate(self)
+5: Velocity z-coordinate(self)
+
+6: Attitude x-coordinate(self)
+7: Attitude y-coordinate(self)
+8: Attitude z-coordinate(self)
+
+9: Attitude Rate x-coordinate(self)
+10: Attitude Rate y-coordinate(self)
+11: Attitude Rate z-coordinate(self)
+
+12: Position x-coordinate(opponent)
+13: Position y-coordinate(opponent)
+14: Position z-coordinate(opponent)
+
+15: Velocity x-coordinate(opponent)
+16: Velocity y-coordinate(opponent)
+17: Velocity z-coordinate(opponent)
+
+18: Attitude x-coordinate(opponent)
+19: Attitude y-coordinate(opponent)
+20: Attitude z-coordinate(opponent)
+
+21: Attitude Rate x-coordinate(opponent)
+22: Attitude Rate y-coordinate(opponent)
+23: Attitude Rate z-coordinate(opponent)
+
+24: Do you have the solar panel (1 = yes, 0 = no)
+25: Does your opponent have the solar panel (1 = yes, 0 = no)
+
+26: Is the Panel within your cone of sight (1 = yes, 0 = no)
+27: Is the Panel synced up to the SPHERE (1 = yes, 0 = no)
+28: Is the Station synced up to the SPHERE (1 = yes, 0 = no)
+
+29: Your Score
+30: Opponent's Score
+
+31: Charge remaining
+32: Fuel Remaining
+33: Are you being repelled (1 = yes, 0 = no)
+34: Are you outside the Boundary (1 = yes, 0 = no)
