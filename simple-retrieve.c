@@ -55,8 +55,8 @@ void ZRUser(float myState[12], float otherState[12], float time) {
     }
     if (isStationInSync() && time > 150) {
         float stop[3] = {0, 0, 0};
-        ZRSetTorques(stop);
         float velocity[3] = {0, 0, .01};
+        ZRSetTorques(stop);
         ZRSetVelocityTarget(velocity);
     }
 }
