@@ -1,0 +1,3 @@
+Add any code, either for testing or actual competition, to this repository.
+The ZR IDE won't let you copy and paste a whole file, but post everything using traditional C syntax, and copy each piece (function headers, function bodies, global variables) into the right place.
+Always include a thorough comment block at the top of your file, plus comments throughout your code as necessary, describing its usage and behavior, and make note of any simulation options that need to be set for the test to run properly (positions, angles, etc).
