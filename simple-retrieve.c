@@ -28,7 +28,7 @@
  * 
  */
 
-void ZRUser(float myState[12], float otherState[12], float time) {
+void ZRUser(float * myState, float * otherState, float time) {
     if (time < 150) {
         //TODO: move to center of panel initialization circle, instead of
         //assuming that position from the start
