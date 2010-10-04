@@ -50,7 +50,7 @@
  *       vresult using Vfunc(7,myState+3,vresult,vresult,0);
 */
 
-// float Vfunc(float *v1, float *v2, float *vresult, float scalar) {
+// float Vfunc(int which, float *v1, float *v2, float *vresult, float scalar) {
 
 	int i;
 	
