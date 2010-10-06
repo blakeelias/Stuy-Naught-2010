@@ -11,17 +11,11 @@
  * Usage: Repelling, Deflecting Repelling
  *	void ZRUser(float * myState, float * otherState, float time) {
  *		FaceOtherSphere(myState, otherState);
- *		}
+ *	}
 */
 
 void FaceOtherSphere(float * myState, float * otherState) {
-	float attTarget[3];
-
-	int i;
-
-	for(i=0; i<3; i++) {
-		attTarget[i] = otherState[i] - myState[i];
-		}
-
-	ZRSetAttitudeTarget(attTarget);
-	}
+  float attTarget[3];
+  Vfunc(2, otherState, myState, attTarget, 0); //take the difference
+  ZRSetAttitudeTarget(attTarget);
+}
