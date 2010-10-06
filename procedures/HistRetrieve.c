@@ -1,4 +1,4 @@
-/* Global Variable: history[7350]
+/* Global Variable: history[width*35]
  *
  * Inputs:
  *    part:  An array of 'len' number of floats (pointer)
@@ -26,10 +26,11 @@
  * See HistValues.txt
  */
 
-void HistRetrieve(float * part, int time,int start, int len) {
+void HistRetrieve(float * part, int time, int start, int len) {
+	int width = 35;
 	int k;
 	//replaces the array with information from the history
 	for (k=0; k<len; k++) {
-		part[k] = history[35*time+start+k];
+		part[k] = history[width*time+start+k];
 	}
 }
