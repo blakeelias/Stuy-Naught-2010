@@ -7,7 +7,7 @@
  *     vresult: output vector, float vresult[3]
  *     scalar: input scalar
  *
- *  Note: some arguments are ignored for some functions, and so can be given any values
+ *  Note: some arguments are ignored for some functions, and so can be given the value NULL
  * 
  *  Assume, for documentation below, the following variables are already declared:
  *      float a1[3], a2[3], a3[3], s;
@@ -15,7 +15,7 @@
  *  Functions:
  *    Length of vector: 
  *       which == 0: returns |v1| (= length of v1)
- *       s = Vfunc(0,a1,a2,a3,0); // returns length(a1)
+ *       s = Vfunc(0,a1,NULL,NULL,0); // returns length(a1)
  *
  *    Adding vectors:
  *       which == 1: vresult = v1 + v2
@@ -27,13 +27,13 @@
  *
  *    Unit vector:
  *       which == 3: vresult = unit vector in direction of v1
- *       if s = Vfunc(3,a1,a2,a3,0); // a3 = a1 / |a1|
+ *       if s = Vfunc(3,a1,NULL,a3,0); // a3 = a1 / |a1|
  *       Note: returns 0.0 if |a1| == 0, then sets a3 to the zero vector
  *             returns 1.0 under normal circumstances
  *
  *    Scalar times vector:
  *       which == 4: vresult = s * v1
- *        Vfunc(4,a1,a2,a3,s);  // a3 = s * a1
+ *        Vfunc(4,a1,NULL,a3,s);  // a3 = s * a1
  *
  *    Dot product:
  *       which == 5: returns v1 * v2
@@ -45,9 +45,9 @@
  *
  *    Copy a vector:
  *       which == 7: copies v1 to vresult:
- *       Vfunc(7,a1,a2,a3,0);  // copies vector a1 to a3
+ *       Vfunc(7,a1,NULL,a3,0);  // copies vector a1 to a3
  *       Note: for instance, this can copy the velocities in myState (starting at myState[3]) to
- *       vresult using Vfunc(7,myState+3,vresult,vresult,0);
+ *       vresult using Vfunc(7,myState+3,NULL,vresult,0);
 */
 
 // float Vfunc(int which, float *v1, float *v2, float *vresult, float scalar) {
