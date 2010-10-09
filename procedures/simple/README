@@ -1,0 +1,18 @@
+To test this AI, run:
+
+
+make
+
+
+and copy+paste the code in out.c into the ZeroRobotics IDE. You
+will need to have the entire "simple" directory to make out.c
+successfully.
+
+
+This is a simple satellite that attempts to dock with the panel
+and then with the station, without using any defensive or
+offensive strategies.
+
+Once better movement functions are completed, change the
+defines in main.c to the names of those functions.
+
