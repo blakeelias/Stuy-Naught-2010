@@ -48,14 +48,28 @@
  *       Vfunc(7,a1,NULL,a3,0);  // copies vector a1 to a3
  *       Note: for instance, this can copy the velocities in myState (starting at myState[3]) to
  *       vresult using Vfunc(7,myState+3,NULL,vresult,0);
+ *
+ *    Angle between 2 vectors (in degrees, not radians):
+ *       which == 8: returns angle between v1 and v2
+ *       float angle = Vfunc(8,a1,a2,NULL,0);
+ *
+ *    Unit vector pointing from v1 to v2:
+ *       which == 9: vresult is the unit vector pointing from position v1 toward position v2
+ *       Vfunc(9,a1,a2,a3,0);   // a3 will be the unit vector
 */
 
-// float Vfunc(int which, float *v1, float *v2, float *vresult, float scalar) {
+/* Copy function header:
+
+float Vfunc(int which, float *v1, float *v2, float *vresult, float scalar)
+
+{
+
+*/
 
 	int i;
 	
 	if (which == 0) // returns |v1|
-		return sqrt(Vfunc(5,v1,v1,v1,0));
+		return sqrt(Vfunc(5,v1,v1,NULL,0));
 
 	if (which == 1) { // vresult = V1 + v2
 		for (i = 0; i < 3; ++i)
@@ -70,10 +84,10 @@
 	}
 
 	if (which == 3) { // vresult = v1 / |v1|; if |v1| == 0, returns 0, else 1
-		float s = Vfunc(0,v1,v1,v1,0);
+		float s = Vfunc(0,v1,NULL,NULL,0);
 		if (s == 0.0)
 			return 0.0;
-		Vfunc(4,v1,v1,vresult,1.0/s);
+		Vfunc(4,v1,NULL,vresult,1.0/s);
 		return 1.0;
 	}
 
@@ -93,7 +107,7 @@
 	if (which == 6) { // returns distance between v1 and v2
 		float v3[3];
 		Vfunc(2,v1,v2,v3,0);  // v3 = v1 - v2
-		return Vfunc(0,v3,v3,v3,0);
+		return Vfunc(0,v3,NULL,NULL,0);
 	}
 
 	if (which == 7) { // copies v1 to vresult
@@ -101,5 +115,17 @@
 			vresult[i] = v1[i];
 		return 0;
 	}
+
+	if (which == 8) { // angle between two vectors
+	    float dot = Vfunc(5,v1,v2,NULL,0)/(Vfunc(0,v1,NULL,NULL,0)*Vfunc(0,v2,NULL,NULL,0));
+	    return acos(dot)*180.0/3.14159265;
+	}
+
+	if (which == 9) { // unit vector pointing from v1 toward v2
+	    float v9[3];
+	    Vfunc(2,v2,v1,v9,0);
+	    return Vfunc(3,v9,NULL,vresult,0);
+	}
+	
 //}
 
