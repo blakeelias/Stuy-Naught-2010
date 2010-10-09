@@ -1,21 +1,3 @@
-#ifdef _MACRO_THAT_WILL_NEVER_BE_DEFINED_
-
-To test this AI, run:
-
-make
-
-and copy+paste the code in out.c into the ZeroRobotics IDE.
-
-
-
-This is a simple satellite that attempts to dock with the panel
-and then with the station, without using any defensive or
-offensive strategies.
-
-Once better movement functions are completed, change the
-defines below to the names of those functions.
-
-#endif
 
 #define SET_POSITION_TARGET ZRSetPositionTarget
 #define SET_ATTITUDE_TARGET ZRSetAttitudeTarget
