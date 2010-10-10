@@ -9,6 +9,7 @@
 #define STATE_TOSTATION   4
 
 int state = STATE_INIT;
+float panelState[4];
 
 void ZRUser(float* myState, float* otherState, float time)
 {
