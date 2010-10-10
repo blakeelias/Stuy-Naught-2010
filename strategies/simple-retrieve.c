@@ -33,14 +33,14 @@ void ZRUser(float * myState, float * otherState, float time) {
     
     if (state == 0) {
         float attitude[3] = {0, 1, 0};
-        float panel_distance;
+        float panel_center_distance;
         float panel_center[3] = {.7, 0, 0};
         
         ZRSetPositionTarget(panel_center);
         ZRSetAttitudeTarget(attitude);
         
-        panel_distance = Vfunc(6, myState, panel_center, NULL, 0);
-        if (panel_distance < 0.01)
+        panel_center_distance = Vfunc(6, myState, panel_center, NULL, 0);
+        if (panel_center_distance < 0.01)
             state = 2;
     }
     //TODO: rotate around the circle to find the panel; in this case,
@@ -54,17 +54,7 @@ void ZRUser(float * myState, float * otherState, float time) {
             ZRSetVelocityTarget(velocity);
         }
         if (iHavePanel())
-            state = 3;
-    }
-    if (state == 3) {
-        if (iHavePanel()) {
-            float stop[3] = {0, 0, 0};
-            float velocity_difference;
-            ZRSetVelocityTarget(stop);
-            velocity_difference = Vfunc(6, &myState[3], stop, NULL, 0);
-            if (velocity_difference < 0.02)
-                state = 4;
-        }
+            state = 4;
     }
     if (state == 4) {
         if (iHavePanel()) {
