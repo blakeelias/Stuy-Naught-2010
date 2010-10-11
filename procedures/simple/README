@@ -1,12 +1,8 @@
-To test this AI, run:
+To test this AI, "cd" into this directory and run "make". Copy
+and paste the code in the resulting file "out.c" into the
+ZeroRobotics IDE. You will need to have this entire directory
+to "make" "out.c" successfully.
 
-
-make
-
-
-and copy+paste the code in out.c into the ZeroRobotics IDE. You
-will need to have the entire "simple" directory to make out.c
-successfully.
 
 
 This is a simple satellite that attempts to dock with the panel
