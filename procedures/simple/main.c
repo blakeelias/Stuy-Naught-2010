@@ -26,7 +26,6 @@
 void ZRUser(float* myState, float* otherState, float time)
 {
  float target[3];
- float targetX;
 
  switch (state)
  {

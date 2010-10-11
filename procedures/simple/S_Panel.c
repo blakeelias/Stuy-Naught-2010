@@ -6,6 +6,12 @@ if (iHavePanel())
  break;
 }
 
-SET_POSITION_TARGET(panelState);
+SET_POSITION_TARGET(&panelState[4]);
 
-//Insert math that points the satellite outwards...
+float panelLoc[3];
+
+VSub(panelState, &panelState[4], panelLoc);
+VUnit(panelLoc, panelLoc);
+
+SET_ATTITUDE_TARGET(panelLoc);
+
