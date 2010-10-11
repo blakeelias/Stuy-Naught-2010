@@ -13,7 +13,7 @@ Usage: Repelling
 void ZRUser(float * myState, float * otherState, float time) {
 	FaceOtherSphere(myState, otherState);
 
-	if ((getPercentChargeRemaining() == 100) {
+	if (getPercentChargeRemaining() == 100) {
 	ZRRepel();
 	}
 
