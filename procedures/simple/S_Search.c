@@ -2,7 +2,7 @@
 
 #include "S_CheckPanel.c"
 
-target[0] = tangentPoints[3] - myState[0];
+target[0] = 0;
 target[1] = tangentPoints[4] - myState[1];
 target[2] = tangentPoints[5] - myState[2];
 
