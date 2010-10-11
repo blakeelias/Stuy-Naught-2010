@@ -1,0 +1,4 @@
+This is ProcVars: the private/public values of float ProcVars[200]:
+
+0: (public): result of getPanelSide(). Set by TaskInit()
+

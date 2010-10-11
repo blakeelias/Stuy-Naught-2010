@@ -41,7 +41,7 @@
  *
  *    Distance between two vectors (as positions):
  *       which == 6: returns |v1-v2|
- *       s = Vfunc(6,a1,a2,a3,0);  // s = length(a1-a2)
+ *       s = Vfunc(6,a1,a2,NULL,0);  // s = length(a1-a2)
  *
  *    Copy a vector:
  *       which == 7: copies v1 to vresult:
