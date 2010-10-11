@@ -8,3 +8,5 @@ if (isPanelFound())
  break;
 }
 
+//I can't figure out the math to get the tangent line to the
+//panel initialization circle...

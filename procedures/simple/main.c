@@ -8,8 +8,7 @@
 #define STATE_TOPANEL     3
 #define STATE_TOSTATION   4
 
-int state = STATE_INIT;
-float panelState[4];
+#include "S_Globals.c"
 
 void ZRUser(float* myState, float* otherState, float time)
 {
