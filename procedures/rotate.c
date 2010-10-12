@@ -25,5 +25,16 @@ ZRSetAttitudeTarget(set);
 }
 
 void rotateTau() {
+	// Rotates about the x-axis by applying a torque of 0.025 N*m (?)
+	// Requires an int tauSet to be set to 1 and a float correctPos to be set to 1.0;
 	
+	float tau[3] = {0.0, 0.025, 0.0};
+	if (correctPos < 2) {
+		ZRSetPositionTarget(a);
+		correctPos += 1.0;
+	}
+	if (tauSet == 1) {
+		ZRSetTorques(tau);
+		tauSet = 0;
+	}
 }
