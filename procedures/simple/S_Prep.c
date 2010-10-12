@@ -13,5 +13,5 @@ target[2] = myState[2];
 
 SET_POSITION_TARGET(target);
 
-//Need to figure out the math to get the tangent line to the
-//panel initialization circle...
+#include "S_Tangent.c"
+

@@ -1,6 +1,7 @@
 
 #define SET_POSITION_TARGET ZRSetPositionTarget
 #define SET_ATTITUDE_TARGET ZRSetAttitudeTarget
+#define SQ(a) ((a) * (a))
 
 //Vfunc defines...
 
