@@ -1,6 +1,7 @@
 
 #define SET_POSITION_TARGET ZRSetPositionTarget
 #define SET_ATTITUDE_TARGET ZRSetAttitudeTarget
+#define SQ(a) ((a) * (a))
 
 //Vfunc defines...
 
@@ -26,6 +27,14 @@
 void ZRUser(float* myState, float* otherState, float time)
 {
  float target[3];
+ float station[4];
+
+ float xDiff;
+ float yDiff;
+ float baseAngle;
+ float angleDiff;
+
+ float a1, a2;
 
  switch (state)
  {
