@@ -31,7 +31,7 @@ void ZRUser(float * myState, float * otherState, float time) {
     
     for(i = 0; i < 36; i++) {
         printf("%f", history_portion[i]);
-        if (i % 36) printf(",");
+        if (i-35) printf(",");
         else printf("\n");
     }
     
