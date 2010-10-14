@@ -8,10 +8,8 @@ if (iHavePanel())
 
 SET_POSITION_TARGET(&panelState[4]);
 
-float panelLoc[3];
+VSub(panelState, &panelState[4], target);
+VUnit(target, target);
 
-VSub(panelState, &panelState[4], panelLoc);
-VUnit(panelLoc, panelLoc);
-
-SET_ATTITUDE_TARGET(panelLoc);
+SET_ATTITUDE_TARGET(target);
 

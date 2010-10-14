@@ -1,0 +1,44 @@
+correction: -5*current_att[0]
+
+time:  0, current_att: ( 0.00,  1.00,  0.00), target: (-0.00,  0.87,  0.50), to_target:  30.0, angle_diff:  -nan out-of-plane:  0.00
+time:  1, current_att: (-0.02,  1.00,  0.05), target: ( 0.08,  0.84,  0.54), to_target:  30.4, angle_diff:   3.1 out-of-plane: -0.86
+time:  2, current_att: (-0.03,  0.99,  0.15), target: ( 0.13,  0.78,  0.62), to_target:  31.2, angle_diff:   5.6 out-of-plane: -1.46
+time:  3, current_att: (-0.02,  0.96,  0.28), target: ( 0.10,  0.69,  0.72), to_target:  30.7, angle_diff:   7.5 out-of-plane: -1.13
+time:  4, current_att: (-0.00,  0.91,  0.42), target: ( 0.01,  0.58,  0.82), to_target:  30.0, angle_diff:   8.7 out-of-plane: -0.10
+time:  5, current_att: ( 0.01,  0.83,  0.56), target: (-0.06,  0.44,  0.90), to_target:  30.3, angle_diff:   9.4 out-of-plane:  0.72
+time:  6, current_att: ( 0.02,  0.72,  0.69), target: (-0.09,  0.27,  0.96), to_target:  30.7, angle_diff:   9.9 out-of-plane:  1.08
+time:  7, current_att: ( 0.02,  0.58,  0.81), target: (-0.09,  0.10,  0.99), to_target:  30.6, angle_diff:  10.3 out-of-plane:  1.06
+time:  8, current_att: ( 0.02,  0.43,  0.90), target: (-0.08, -0.08,  0.99), to_target:  30.5, angle_diff:  10.5 out-of-plane:  0.94
+time:  9, current_att: ( 0.02,  0.25,  0.97), target: (-0.09, -0.26,  0.96), to_target:  30.6, angle_diff:  10.5 out-of-plane:  1.00
+time: 10, current_att: ( 0.02,  0.08,  1.00), target: (-0.10, -0.43,  0.90), to_target:  30.8, angle_diff:  10.4 out-of-plane:  1.17
+time: 11, current_att: ( 0.02, -0.10,  0.99), target: (-0.12, -0.58,  0.81), to_target:  31.0, angle_diff:  10.1 out-of-plane:  1.33
+time: 12, current_att: ( 0.02, -0.27,  0.96), target: (-0.11, -0.71,  0.69), to_target:  30.9, angle_diff:  10.2 out-of-plane:  1.30
+time: 13, current_att: ( 0.02, -0.44,  0.90), target: (-0.11, -0.82,  0.56), to_target:  30.8, angle_diff:   9.9 out-of-plane:  1.24
+time: 14, current_att: ( 0.02, -0.58,  0.81), target: (-0.10, -0.91,  0.41), to_target:  30.7, angle_diff:   9.7 out-of-plane:  1.14
+time: 15, current_att: ( 0.02, -0.71,  0.71), target: (-0.10, -0.96,  0.26), to_target:  30.7, angle_diff:   9.6 out-of-plane:  1.12
+time: 16, current_att: ( 0.02, -0.82,  0.58), target: (-0.09, -0.99,  0.09), to_target:  30.6, angle_diff:   9.5 out-of-plane:  1.05
+time: 17, current_att: ( 0.02, -0.90,  0.43), target: (-0.09, -0.99, -0.07), to_target:  30.5, angle_diff:   9.6 out-of-plane:  0.99
+time: 18, current_att: ( 0.02, -0.96,  0.28), target: (-0.09, -0.97, -0.24), to_target:  30.6, angle_diff:   9.7 out-of-plane:  1.00
+time: 19, current_att: ( 0.02, -0.99,  0.11), target: (-0.09, -0.91, -0.40), to_target:  30.6, angle_diff:   9.8 out-of-plane:  1.02
+time: 20, current_att: ( 0.02, -1.00, -0.06), target: (-0.09, -0.83, -0.55), to_target:  30.6, angle_diff:   9.7 out-of-plane:  1.01
+time: 21, current_att: ( 0.02, -0.97, -0.23), target: (-0.09, -0.73, -0.68), to_target:  30.6, angle_diff:   9.8 out-of-plane:  1.06
+time: 22, current_att: ( 0.02, -0.92, -0.39), target: (-0.11, -0.60, -0.80), to_target:  30.9, angle_diff:  10.0 out-of-plane:  1.27
+time: 23, current_att: ( 0.02, -0.84, -0.55), target: (-0.12, -0.45, -0.89), to_target:  31.1, angle_diff:  10.0 out-of-plane:  1.40
+time: 24, current_att: ( 0.03, -0.73, -0.68), target: (-0.13, -0.29, -0.95), to_target:  31.3, angle_diff:   9.9 out-of-plane:  1.52
+time: 25, current_att: ( 0.03, -0.60, -0.80), target: (-0.13, -0.12, -0.98), to_target:  31.2, angle_diff:   9.9 out-of-plane:  1.48
+time: 26, current_att: ( 0.02, -0.46, -0.89), target: (-0.11,  0.05, -0.99), to_target:  30.9, angle_diff:   9.9 out-of-plane:  1.28
+time: 27, current_att: ( 0.02, -0.29, -0.96), target: (-0.10,  0.22, -0.97), to_target:  30.7, angle_diff:  10.0 out-of-plane:  1.11
+time: 28, current_att: ( 0.02, -0.12, -0.99), target: (-0.10,  0.39, -0.92), to_target:  30.8, angle_diff:  10.1 out-of-plane:  1.17
+time: 29, current_att: ( 0.02,  0.05, -1.00), target: (-0.11,  0.54, -0.83), to_target:  31.0, angle_diff:  10.0 out-of-plane:  1.32
+time: 30, current_att: ( 0.02,  0.22, -0.97), target: (-0.12,  0.68, -0.73), to_target:  31.1, angle_diff:  10.1 out-of-plane:  1.41
+time: 31, current_att: ( 0.02,  0.39, -0.92), target: (-0.12,  0.79, -0.60), to_target:  31.1, angle_diff:   9.9 out-of-plane:  1.41
+time: 32, current_att: ( 0.02,  0.54, -0.84), target: (-0.12,  0.88, -0.46), to_target:  31.0, angle_diff:   9.7 out-of-plane:  1.35
+time: 33, current_att: ( 0.02,  0.67, -0.74), target: (-0.11,  0.95, -0.30), to_target:  30.8, angle_diff:   9.7 out-of-plane:  1.22
+time: 34, current_att: ( 0.02,  0.79, -0.62), target: (-0.09,  0.99, -0.14), to_target:  30.7, angle_diff:   9.7 out-of-plane:  1.09
+time: 35, current_att: ( 0.02,  0.88, -0.47), target: (-0.09,  1.00,  0.03), to_target:  30.6, angle_diff:   9.7 out-of-plane:  1.06
+time: 36, current_att: ( 0.02,  0.95, -0.32), target: (-0.09,  0.98,  0.20), to_target:  30.6, angle_diff:   9.9 out-of-plane:  1.07
+time: 37, current_att: ( 0.02,  0.99, -0.15), target: (-0.10,  0.93,  0.37), to_target:  30.7, angle_diff:  10.0 out-of-plane:  1.11
+time: 38, current_att: ( 0.02,  1.00,  0.03), target: (-0.10,  0.85,  0.52), to_target:  30.7, angle_diff:   9.9 out-of-plane:  1.11
+time: 39, current_att: ( 0.02,  0.98,  0.20), target: (-0.09,  0.75,  0.66), to_target:  30.6, angle_diff:  10.0 out-of-plane:  1.06
+time: 40, current_att: ( 0.02,  0.93,  0.37), target: (-0.10,  0.62,  0.78), to_target:  30.7, angle_diff:  10.1 out-of-plane:  1.15
+
