@@ -29,8 +29,6 @@ void ZRUser(float* myState, float* otherState, float time)
  float target[3];
  float station[4];
 
- float xDiff;
- float yDiff;
  float baseAngle;
  float angleDiff;
 

@@ -1,9 +1,7 @@
 //Code to find tangent lines...
 
-xDiff = myState[1];
-yDiff = myState[2];
-baseAngle = atanf(yDiff / xDiff);
-angleDiff = asinf(0.5 / sqrtf(SQ(xDiff) + SQ(yDiff)));
+baseAngle = atan2f(target[2], target[1]);
+angleDiff = asinf(0.5 / sqrtf(SQ(target[1]) + SQ(target[2])));
 
 a1 = baseAngle + angleDiff;
 a2 = baseAngle - angleDiff;
