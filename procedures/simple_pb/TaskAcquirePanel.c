@@ -28,11 +28,9 @@
 #define AngleForward	30
 
 float hist_frame[H_FRAME], myState[12], otherState[12], rest[H_FRAME-24];
-float temp[3], temp2[3], target_att[3], current_att[3], current_pos[3], panelState[4];
+float temp[3], target_att[3], current_att[3], current_pos[3], panelState[4];
 float current_theta, target_theta;
 float position_tolerance = .02;  // 2 cm tolerance for being at the staging area (just a guess)
-float distance_to_staging_area;
-
 
 if (is_first_call)
     ProcVars[P_PHASE] = 1;
