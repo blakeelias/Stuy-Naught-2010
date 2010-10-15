@@ -15,5 +15,4 @@ target[2] = sinf(baseAngle) * 0.7;
 
 SET_POSITION_TARGET(target);
 #undef targetX
-#include "S_Tangent.c"
 
