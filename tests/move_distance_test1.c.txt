@@ -1,0 +1,58 @@
+// movement test
+
+
+/*  
+
+purpose -- to provide position data on a movment from start to center of panel initalization circle
+
+method -- move from start to end, recording disance to target and time
+	  using ZRSetPositionTarget(target);
+
+Usage -- Copy the code below to the ZR user portion of the simulator and copy vfunc (code only) to a simulator funtion area
+	 Run for about 35 seconds.
+	Open the console window before running.
+	After running,  copy the contents of the console window to notepad or equivalent, 
+		producing a csv file
+	Save the file with a .txt or .csv extension. 
+	For further analysis, open the file with excel or another spreadsheet program.
+
+variations  -- the target could be changed
+		the starting point could be changed, using game variables rather than the default
+		
+
+notes -- the console sometimes does not record the first 5 seconds; you may have to restart the simulator
+	 a results spreadsheet has been posted with this file
+	
+
+
+uses Vfunct
+
+Globals  -- none
+
+*/
+
+
+float current_position[3];
+float target[3];
+float distance = 0;
+
+
+current_position[0] = myState[0];
+current_position[1] = myState[1];
+current_position[2] = myState[2];
+
+
+target[0] = 0.7;
+target[1] = 0;
+target[2] = 0;
+
+
+distance = Vfunc(6, target, current_position, current_position, 1);
+if (time == 0) printf(" time, distance, percentage fuel left, current X, current Y, current Z \n");
+printf("%f,  %f,  %f,  %f,  %f,  %f\n", time, distance, getPercentFuelRemaining(), current_position[0], current_position[1], current_position[2]);
+
+
+ZRSetPositionTarget(target);
+
+
+
