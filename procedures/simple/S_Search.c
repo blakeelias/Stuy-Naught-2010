@@ -8,7 +8,7 @@
 
 #include "S_Target.c"
 
-tangentPoints[2] += scanTarget * 0.4;
+tangentPoints[2] += scanTarget * 0.2;
 
 if ((scanTarget == 1) && (tangentPoints[2] >= tangentPoints[1]))
  scanTarget = -1;
