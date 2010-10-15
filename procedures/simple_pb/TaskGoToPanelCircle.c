@@ -4,9 +4,7 @@
  * and rotate to point toward +Y axis.
 */
 
-// return values from Task functions:
-#define TASK_FINISHED   1
-#define TASK_UNFINISHED 0
+// include defines.h
 
 float target_pos[3] = {0,0,0};
 float target_att[3] = {0,0,0};
@@ -33,8 +31,9 @@ angle_from_desired = Vfunc(8,current_att,target_att,NULL,0);
 
 printf("distance to panel circle: %f, degrees to go: %f\n",current_dist,angle_from_desired);
 if (current_dist <= pos_tolerance) {
-    printf("time: %d, TaskGoToPanelCircle finished\n",G_time);
-    return TASK_FINISHED;
+    printf("time: %d, TaskGoToPanelCircle finished. Fuel: %5.2f, Charge: %5.2f\n",
+        G_time,getPercentFuelRemaining(),getPercentChargeRemaining());
+    return T_ACQUIRE_PANEL;
 }
 else {
     ZRSetPositionTarget(target_pos);

@@ -2,3 +2,7 @@ This is ProcVars: the private/public values of float ProcVars[200]:
 
 0: (public): result of getPanelSide(). Set by TaskInit()
 
+10-13: (private): used by TaskPointTowardPanelAndStop().
+14-17: (public): returned by getPanelState()
+
+

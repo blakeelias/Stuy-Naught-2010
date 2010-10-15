@@ -27,3 +27,23 @@
 #define Deg2Rad(Deg)	(Deg*PI/180.0)
 #define Rad2Deg(Rad)	(Rad*180.0/PI)
 
+// HistFunc constants
+#define H_FRAME         37
+
+#define H_MYSTATE       0
+#define H_OTHERSTATE    12
+
+#define H_IHAVEPANEL    24
+#define H_OTHERHASPANEL 25
+#define H_ISPANELFOUND  26
+#define H_ISPANELINSYNC 27
+#define H_ISSTATIONINSYNC   28
+#define H_CURRENTSCORE  29
+#define H_OTHERCURRENTSCORE     30
+#define H_PERCENTCHARGEREMAINING    31
+#define H_PERCENTFUELREMAINING  32
+#define H_OTHERREPELLING    33
+#define H_OUTSIDEBOUNDARY   34
+#define H_OPPONENTINCONE    35
+#define H_GSTATE            36
+
