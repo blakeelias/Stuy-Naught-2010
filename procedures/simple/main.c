@@ -1,6 +1,12 @@
 
 #define SET_POSITION_TARGET ZRSetPositionTarget
 #define SET_ATTITUDE_TARGET ZRSetAttitudeTarget
+
+//Target distance from center of panel init circle
+#define SEARCH_DISTANCE         0.7
+//Rotation speed when searching for panel
+#define SEARCH_ANGULAR_VELOCITY 0.2
+
 #define SQ(a) ((a) * (a))
 
 //Vfunc defines...

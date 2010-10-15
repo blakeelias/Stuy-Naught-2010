@@ -10,8 +10,8 @@ if (fabs(myState[0] - targetX) < .02)
 baseAngle = atan2f(myState[2], myState[1]);
 
 target[0] = targetX;
-target[1] = cosf(baseAngle) * 0.7;
-target[2] = sinf(baseAngle) * 0.7;
+target[1] = cosf(baseAngle) * SEARCH_DISTANCE;
+target[2] = sinf(baseAngle) * SEARCH_DISTANCE;
 
 SET_POSITION_TARGET(target);
 
