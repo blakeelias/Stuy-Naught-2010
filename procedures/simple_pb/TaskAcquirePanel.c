@@ -115,8 +115,9 @@ else if (ProcVars[P_PHASE] == 3) {
     // nope, set velocity toward panel at 1.2 cm/sec
     VCopy(myState,current_pos);                     // get the current position
     VPoint(current_pos,ProcVars+P_PANEL_POS,temp);  // get the unit vector pointing from here toward panel
+    ZRSetAttitudeTarget(temp);                      // make sure we're pointing at the panel
     VMult(temp,0.012,target_att);                   // multiply that by 0.012 (1.2 cm/sec)
-    ZRSetVelocityTarget(target_att);
+    ZRSetVelocityTarget(target_att);                // set the velocity toward the panel
     return TASK_UNFINISHED;
 }
 
