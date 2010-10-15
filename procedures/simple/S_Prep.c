@@ -14,6 +14,13 @@ target[1] = cosf(baseAngle) * 0.7;
 target[2] = sinf(baseAngle) * 0.7;
 
 SET_POSITION_TARGET(target);
-#undef targetX
+
+#define COORD target
 #include "S_Tangent.c"
+#undef COORD
+#undef targetX
+
+tangentPoints[2] = tangentPoints[0];
+
+#include "S_Target.c"
 
