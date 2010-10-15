@@ -37,6 +37,7 @@ void ZRUser(float* myState, float* otherState, float time)
 
  float baseAngle;
  float angleDiff;
+ float baseRadius;
 
  float a1, a2;
 

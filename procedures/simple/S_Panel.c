@@ -8,7 +8,8 @@ if (iHavePanel())
 
 SET_POSITION_TARGET(&panelState[4]);
 
-VSub(panelState, &panelState[4], target);
+VCopy(panelState, target);
+target[0] = 0;
 VUnit(target, target);
 
 SET_ATTITUDE_TARGET(target);
