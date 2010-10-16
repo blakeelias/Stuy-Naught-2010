@@ -4,7 +4,7 @@
 
 #define targetX (getPanelSide() * 0.7)
 
-if (fabs(myState[0] - targetX) < .02)
+if (fabs(myState[0] - targetX) < ERROR_TOLERANCE)
  state = STATE_SEARCHING;
 
 baseAngle = atan2f(myState[2], myState[1]);

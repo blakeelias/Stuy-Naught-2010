@@ -9,6 +9,12 @@ This is a simple satellite that attempts to dock with the panel
 and then with the station, without using any defensive or
 offensive strategies.
 
-Once better movement functions are completed, change the
-defines in main.c to the names of those functions.
+Several important macros are defined at the top of
+"S_Macros.c". These represent vital constants. Experimentation
+is needed to see which set of constants provide the best
+results. See the file for more details.
+
+Also, if better movement and/or attitude target functions are
+ever made, change the defines in "S_Macros.c" to the names of
+those functions.
 

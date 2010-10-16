@@ -4,8 +4,8 @@ getStationState(station);
 
 VCopy(station, target);
 
-target[1] += cosf(station[3]) * 0.03;
-target[2] += sinf(station[3]) * 0.03;
+target[1] += cosf(station[3]) * DOCK_DISTANCE;
+target[2] += sinf(station[3]) * DOCK_DISTANCE;
 
 SET_POSITION_TARGET(target);
 

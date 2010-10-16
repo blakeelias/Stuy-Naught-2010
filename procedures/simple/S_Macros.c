@@ -5,10 +5,25 @@
 #define SET_POSITION_TARGET ZRSetPositionTarget
 #define SET_ATTITUDE_TARGET ZRSetAttitudeTarget
 
-//Target distance from center of panel init circle
+//The target distance from the center of the panel init circle.
+//The satellite, upon starting, will move to the closest point
+//on the plane of the panel init circle that is this many
+//meters away from the center of the circle.
 #define SEARCH_DISTANCE         0.7
-//Rotation speed when searching for panel
+
+//Rotation speed when searching for the panel. The satellite
+//controls its rotation by setting its attitude target to a
+//point this many radians away from its current attitude.
 #define SEARCH_ANGULAR_VELOCITY 0.15
+
+//The number of meters in front of a docking target that the
+//satellite will move to.
+#define DOCK_DISTANCE           0.03
+
+//The satellite will always be drifting away from its position.
+//If the satellite is less than this number of meters away from
+//its target position, it will tolerate the error.
+#define ERROR_TOLERANCE         0.02
 
 //Add more states as necessary
 #define STATE_INIT        0
