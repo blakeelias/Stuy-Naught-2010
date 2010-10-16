@@ -1,18 +1,43 @@
 To test this AI, "cd" into this directory and run "make". Copy
 and paste the code in the resulting file "out.c" into the
 ZeroRobotics IDE. You will need to have this entire directory
-to "make" "out.c" successfully.
+to "make" "out.c" successfully. You will also need Brooks'
+Vfunc.
 
 
 
 This is a simple satellite that attempts to dock with the panel
 and then with the station, without using any defensive or
-offensive strategies.
+offensive strategies:
 
-Several important macros are defined at the top of
-"S_Macros.c". These represent vital constants. Experimentation
-is needed to see which set of constants provide the best
-results. See the file for more details.
+1) The satellite moves to the same plane as the panel init
+circle, but outside it, so that it doesn't need to rotate as
+much to find the panel. How far away from the center of the
+panel init circle it goes is controlled by a macro in
+S_Macros.c (SEARCH_DISTANCE).
+
+2) The satellite finds the two tangent lines to the panel init
+circle that goes through its location, and searches inside this
+angle. These two tangent lines are constantly refreshed to
+accomodate drift. To control its rate of search, the satellite
+sets its attitude target to a point some angle away from its
+current attitude target. This angle is also controlled by a
+macro in S_Macros.c (SEARCH_ANGULAR_VELOCITY).
+
+3) The satellite moves in front of the panel to dock with it,
+then in front of the station to dock with that. The target
+distance from the panel/station is controlled by a macro in
+S_Macros.c (DOCK_DISTANCE).
+
+Since it's impossible for the satellite to be exactly at a
+position, it must be willing to tolerate some degree of error.
+This tolerance is controlled by... Ah, you get the point
+(ERROR_TOLERANCE).
+
+
+
+Experimentation is needed to see which set of constants should
+be used in S_Macros.c to get the best results.
 
 Also, if better movement and/or attitude target functions are
 ever made, change the defines in "S_Macros.c" to the names of
