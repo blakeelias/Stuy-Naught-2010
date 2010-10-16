@@ -8,7 +8,7 @@
 //Target distance from center of panel init circle
 #define SEARCH_DISTANCE         0.7
 //Rotation speed when searching for panel
-#define SEARCH_ANGULAR_VELOCITY 0.2
+#define SEARCH_ANGULAR_VELOCITY 0.15
 
 //Add more states as necessary
 #define STATE_INIT        0
@@ -19,7 +19,7 @@
 
 
 
-//Don't touch anything beyond this point
+//Avoid touching anything beyond this point
 #define SQ(a) ((a) * (a))
 #define PI  3.141592653589793238462
 
