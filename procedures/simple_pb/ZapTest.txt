@@ -1,0 +1,179 @@
+ZapTest.c:  Tests what happens to a SPHERE when zapped by its opponent from a distance of 1.4 m
+
+ZapTest.c is the code to race against itself, since it contains the code for both SPHERES.
+
+Red (passive) goes to its panel circle center.
+
+Blue (active) goes to its panel cicrle center while
+keeping its rear to the sun to charge
+
+When full charged and at panel center, it turns to face
+Red and while Rec is in sight, it repels as long as 
+it has charge (about 16 seconds).
+
+Repelling decreases charge by 10% per zap.
+
+Zapping starts at 46 seconds
+Within 3 seconds (at 49 secs) RED is outside of area that it can see its panel.
+and remains completely outside for 21 seconds! (until 70)
+and then comes back in slowly.
+
+the turnaround to face RED costs 15% fuel
+at end of zapping (at about 60 secs) fuel is at 55%
+
+
+time:    0, (RED) distance away from panel center:  0.700
+time:    1, (RED) distance away from panel center:  0.785
+time:    2, (RED) distance away from panel center:  0.781
+time:    3, (RED) distance away from panel center:  0.768
+time:    4, (RED) distance away from panel center:  0.747
+time:    5, (RED) distance away from panel center:  0.717
+time:    6, (RED) distance away from panel center:  0.679
+time:    7, (RED) distance away from panel center:  0.633
+time:    8, (RED) distance away from panel center:  0.582
+time:    9, (RED) distance away from panel center:  0.529
+time:   10, (RED) distance away from panel center:  0.476
+time:   11, (RED) distance away from panel center:  0.424
+time:   12, (RED) distance away from panel center:  0.375
+time:   13, (RED) distance away from panel center:  0.329
+time:   14, (RED) distance away from panel center:  0.286
+time:   15, (RED) distance away from panel center:  0.247
+time:   16, (RED) distance away from panel center:  0.212
+time:   17, (RED) distance away from panel center:  0.180
+time:   18, (RED) distance away from panel center:  0.152
+time:   19, (RED) distance away from panel center:  0.128
+time:   20, (RED) distance away from panel center:  0.107
+time:   21, (RED) distance away from panel center:  0.088
+time:   22, (RED) distance away from panel center:  0.072
+time:   23, (RED) distance away from panel center:  0.059
+time:   24, (RED) distance away from panel center:  0.047
+time:   25, (RED) distance away from panel center:  0.037
+time:   26, (RED) distance away from panel center:  0.029
+time:   27, (RED) distance away from panel center:  0.023
+time:   28, (BLUE): angle to opponent: 150.404480
+time:   28, (RED) distance away from panel center:  0.017
+time:   29, (RED) distance away from panel center:  0.012
+time:   29, (BLUE): angle to opponent: 147.719284
+time:   30, (BLUE): angle to opponent: 148.114578
+time:   30, (RED) distance away from panel center:  0.009
+time:   31, (RED) distance away from panel center:  0.006
+time:   31, (BLUE): angle to opponent: 145.347015
+time:   32, (BLUE): angle to opponent: 146.047272
+time:   32, (RED) distance away from panel center:  0.005
+time:   33, (RED) distance away from panel center:  0.005
+time:   33, (BLUE): angle to opponent: 159.450195
+time:   34, (BLUE): angle to opponent: 161.235794
+time:   34, (RED) distance away from panel center:  0.006
+time:   35, (RED) distance away from panel center:  0.007
+time:   35, (BLUE): angle to opponent: 158.867310
+time:   36, (BLUE): angle to opponent: 137.799515
+time:   36, (RED) distance away from panel center:  0.008
+time:   37, (RED) distance away from panel center:  0.009
+time:   37, (BLUE): angle to opponent: 135.398880
+time:   38, (BLUE): angle to opponent: 114.714638
+time:   38, (RED) distance away from panel center:  0.010
+time:   39, (RED) distance away from panel center:  0.011
+time:   39, (BLUE): angle to opponent: 97.508072
+time:   40, (BLUE): angle to opponent: 64.283691
+time:   40, (RED) distance away from panel center:  0.011
+time:   41, (RED) distance away from panel center:  0.012
+time:   41, (BLUE): angle to opponent: 66.986740
+time:   42, (BLUE): angle to opponent: 61.024456
+time:   42, (RED) distance away from panel center:  0.013
+time:   43, (RED) distance away from panel center:  0.014
+time:   43, (BLUE): angle to opponent: 57.502731
+time:   44, (BLUE): angle to opponent: 42.446537
+time:   44, (RED) distance away from panel center:  0.014
+time:   45, (RED) distance away from panel center:  0.014
+time:   45, (BLUE): angle to opponent: 42.452923
+time:   46, (BLUE): ZAPPING ++++++++++++++++++++
+time:   46, (RED) distance away from panel center:  0.015
+time:   47, (RED) distance away from panel center:  0.020
+time:   47, (BLUE): ZAPPING ++++++++++++++++++++
+time:   48, (BLUE): ZAPPING ++++++++++++++++++++
+time:   48, (RED) distance away from panel center:  0.033
+time:   49, (RED) distance away from panel center:  0.055
+time:   49, (BLUE): ZAPPING ++++++++++++++++++++
+time:   50, (BLUE): ZAPPING ++++++++++++++++++++
+time:   50, (RED) distance away from panel center:  0.086
+time:   51, (RED) distance away from panel center:  0.124
+time:   51, (BLUE): angle to opponent: 39.876507
+time:   52, (BLUE): angle to opponent: 47.091911
+time:   52, (RED) distance away from panel center:  0.157
+time:   53, (RED) distance away from panel center:  0.182
+time:   53, (BLUE): angle to opponent: 42.768291
+time:   54, (BLUE): ZAPPING ++++++++++++++++++++
+time:   54, (RED) distance away from panel center:  0.199
+time:   55, (RED) distance away from panel center:  0.209
+time:   55, (BLUE): ZAPPING ++++++++++++++++++++
+time:   56, (BLUE): ZAPPING ++++++++++++++++++++
+time:   56, (RED) distance away from panel center:  0.210
+time:   57, (RED) distance away from panel center:  0.205
+time:   57, (BLUE): ZAPPING ++++++++++++++++++++
+time:   58, (BLUE): ZAPPING ++++++++++++++++++++
+time:   58, (RED) distance away from panel center:  0.195
+time:   59, (BLUE): angle to opponent: 42.877842
+time:   59, (RED) distance away from panel center:  0.183
+time:   60, (RED) distance away from panel center:  0.169
+time:   60, (BLUE): angle to opponent: 36.753044
+time:   61, (BLUE): angle to opponent: 45.962078
+time:   61, (RED) distance away from panel center:  0.155
+time:   62, (RED) distance away from panel center:  0.140
+time:   62, (BLUE): angle to opponent: 45.954189
+time:   63, (BLUE): angle to opponent: 156.059540
+time:   63, (RED) distance away from panel center:  0.125
+time:   64, (RED) distance away from panel center:  0.111
+time:   64, (BLUE): angle to opponent: 74.709045
+time:   65, (BLUE): angle to opponent: 74.706345
+time:   65, (RED) distance away from panel center:  0.096
+time:   66, (RED) distance away from panel center:  0.082
+time:   66, (BLUE): angle to opponent: 74.693619
+time:   67, (BLUE): angle to opponent: 74.670197
+time:   67, (RED) distance away from panel center:  0.070
+time:   68, (RED) distance away from panel center:  0.059
+time:   68, (BLUE): angle to opponent: 74.636482
+time:   69, (BLUE): angle to opponent: 74.593575
+time:   69, (RED) distance away from panel center:  0.050
+time:   70, (RED) distance away from panel center:  0.041
+time:   70, (BLUE): angle to opponent: 74.543282
+time:   71, (BLUE): angle to opponent: 123.268257
+time:   71, (RED) distance away from panel center:  0.034
+time:   72, (RED) distance away from panel center:  0.027
+time:   72, (BLUE): angle to opponent: 123.227089
+time:   73, (BLUE): angle to opponent: 123.183838
+time:   73, (RED) distance away from panel center:  0.021
+time:   74, (RED) distance away from panel center:  0.016
+time:   74, (BLUE): angle to opponent: 123.148003
+time:   75, (BLUE): angle to opponent: 123.120003
+time:   75, (RED) distance away from panel center:  0.012
+time:   76, (RED) distance away from panel center:  0.009
+time:   76, (BLUE): angle to opponent: 123.100372
+time:   77, (BLUE): angle to opponent: 123.088127
+time:   77, (RED) distance away from panel center:  0.006
+time:   78, (RED) distance away from panel center:  0.004
+time:   78, (BLUE): angle to opponent: 123.089218
+time:   79, (BLUE): angle to opponent: 123.096184
+time:   79, (RED) distance away from panel center:  0.003
+time:   80, (RED) distance away from panel center:  0.004
+time:   80, (BLUE): angle to opponent: 123.107323
+time:   81, (BLUE): angle to opponent: 123.126030
+time:   81, (RED) distance away from panel center:  0.005
+time:   82, (RED) distance away from panel center:  0.007
+time:   82, (BLUE): angle to opponent: 123.136589
+time:   83, (BLUE): angle to opponent: 123.148643
+time:   83, (RED) distance away from panel center:  0.008
+time:   84, (RED) distance away from panel center:  0.009
+time:   84, (BLUE): angle to opponent: 155.883057
+time:   85, (BLUE): angle to opponent: 133.002335
+time:   85, (RED) distance away from panel center:  0.010
+time:   86, (RED) distance away from panel center:  0.011
+time:   86, (BLUE): angle to opponent: 133.021759
+time:   87, (BLUE): angle to opponent: 133.039932
+time:   87, (RED) distance away from panel center:  0.011
+time:   88, (RED) distance away from panel center:  0.012
+time:   88, (BLUE): angle to opponent: 133.058121
+time:   89, (BLUE): angle to opponent: 133.076950
+time:   89, (RED) distance away from panel center:  0.012
+time:   90, (RED) distance away from panel center:  0.013
+time:   90, (BLUE): angle to opponent: 61.778812
+
