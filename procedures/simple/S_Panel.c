@@ -3,6 +3,7 @@
 if (iHavePanel())
 {
  state = STATE_TOSTATION;
+ scanTarget = 0;
  break;
 }
 

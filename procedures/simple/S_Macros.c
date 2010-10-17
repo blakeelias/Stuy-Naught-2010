@@ -14,7 +14,7 @@
 //Rotation speed when searching for the panel. The satellite
 //controls its rotation by setting its attitude target to a
 //point this many radians away from its current attitude.
-#define SEARCH_ANGULAR_VELOCITY 0.15
+#define SEARCH_ANGULAR_VELOCITY 0.1
 
 //The number of meters in front of a docking target that the
 //satellite will move to.
@@ -23,7 +23,7 @@
 //The satellite will always be drifting away from its position.
 //If the satellite is less than this number of meters away from
 //its target position, it will tolerate the error.
-#define ERROR_TOLERANCE         0.02
+#define ERROR_TOLERANCE         0.1
 
 //Add more states as necessary
 #define STATE_INIT        0
