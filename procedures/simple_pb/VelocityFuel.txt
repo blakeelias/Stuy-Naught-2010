@@ -1,0 +1,69 @@
+This was a test to watch ZRSetTargetPosition() move the SPHERE and consume fuel:
+Phase 1: move from birthplace to center of panel circle
+Phase 2: move from there to center of opponent panel circle
+
+Conclusions:
+1. ZRSetPositionTarget() accelerates for 1/3 of the time, and immediately decelerates for the 2/3 (rest) of the time.
+2. % of fuel consumed is directly proportional to the change in velocity (as expected from physics).
+3. for each .01 m/sec change in velocity, it expends 2.4% of the fuel
+4. to get from birthplace to own panel (approx. 0.8 m), maximum velocity is 0.05 m/sec, and it takes about 25 seconds
+5. to get from there to opponent panel (1.4 m), maximum velocity is 0.08 m/sec and it takes about 31 seconds
+
+time:    0, To own panel:, dist to target:  0.78, % to target: 100.0, velocity:  0.00, fuel: 100.0
+time:    1, To own panel:, dist to target:  0.77, % to target:  99.1, velocity:  0.01, fuel:  98.2
+time:    2, To own panel:, dist to target:  0.76, % to target:  97.2, velocity:  0.02, fuel:  96.4
+time:    3, To own panel:, dist to target:  0.74, % to target:  94.2, velocity:  0.02, fuel:  94.6
+time:    4, To own panel:, dist to target:  0.71, % to target:  90.2, velocity:  0.03, fuel:  92.7
+time:    5, To own panel:, dist to target:  0.67, % to target:  85.2, velocity:  0.04, fuel:  90.8
+time:    6, To own panel:, dist to target:  0.62, % to target:  79.3, velocity:  0.05, fuel:  89.0
+time:    7, To own panel:, dist to target:  0.57, % to target:  72.8, velocity:  0.05, fuel:  88.1
+time:    8, To own panel:, dist to target:  0.52, % to target:  66.1, velocity:  0.05, fuel:  87.7
+time:    9, To own panel:, dist to target:  0.46, % to target:  59.4, velocity:  0.05, fuel:  87.6
+time:   10, To own panel:, dist to target:  0.41, % to target:  52.9, velocity:  0.05, fuel:  87.3
+time:   11, To own panel:, dist to target:  0.37, % to target:  46.8, velocity:  0.05, fuel:  86.7
+time:   12, To own panel:, dist to target:  0.32, % to target:  41.0, velocity:  0.05, fuel:  86.0
+time:   13, To own panel:, dist to target:  0.28, % to target:  35.6, velocity:  0.04, fuel:  85.2
+time:   14, To own panel:, dist to target:  0.24, % to target:  30.7, velocity:  0.04, fuel:  84.3
+time:   15, To own panel:, dist to target:  0.20, % to target:  26.2, velocity:  0.03, fuel:  83.4
+time:   16, To own panel:, dist to target:  0.17, % to target:  22.2, velocity:  0.03, fuel:  82.5
+time:   17, To own panel:, dist to target:  0.15, % to target:  18.7, velocity:  0.03, fuel:  81.6
+time:   18, To own panel:, dist to target:  0.12, % to target:  15.6, velocity:  0.02, fuel:  80.8
+time:   19, To own panel:, dist to target:  0.10, % to target:  12.8, velocity:  0.02, fuel:  80.1
+time:   20, To own panel:, dist to target:  0.08, % to target:  10.5, velocity:  0.02, fuel:  79.4
+time:   21, To own panel:, dist to target:  0.07, % to target:   8.5, velocity:  0.02, fuel:  78.8
+time:   22, To own panel:, dist to target:  0.05, % to target:   6.8, velocity:  0.01, fuel:  78.2
+time:   23, To own panel:, dist to target:  0.04, % to target:   5.4, velocity:  0.01, fuel:  77.7
+time:   24, To own panel:, dist to target:  0.03, % to target:   4.2, velocity:  0.01, fuel:  77.3
+time:   25, To own panel:, dist to target:  0.03, % to target:   3.2, velocity:  0.01, fuel:  76.9
+time:   26, To other panel:, dist to target:  0.02, % to target:   2.5, velocity:  0.01, fuel:  76.6
+time:   27, To other panel:, dist to target:  1.38, % to target:  99.8, velocity:  0.01, fuel:  74.3
+time:   28, To other panel:, dist to target:  1.37, % to target:  98.9, velocity:  0.01, fuel:  72.0
+time:   29, To other panel:, dist to target:  1.35, % to target:  97.4, velocity:  0.02, fuel:  69.8
+time:   30, To other panel:, dist to target:  1.32, % to target:  95.2, velocity:  0.03, fuel:  67.8
+time:   31, To other panel:, dist to target:  1.28, % to target:  92.5, velocity:  0.04, fuel:  65.8
+time:   32, To other panel:, dist to target:  1.23, % to target:  89.2, velocity:  0.05, fuel:  64.0
+time:   33, To other panel:, dist to target:  1.18, % to target:  85.3, velocity:  0.05, fuel:  62.3
+time:   34, To other panel:, dist to target:  1.12, % to target:  81.0, velocity:  0.06, fuel:  60.6
+time:   35, To other panel:, dist to target:  1.05, % to target:  76.0, velocity:  0.07, fuel:  59.1
+time:   36, To other panel:, dist to target:  0.98, % to target:  70.6, velocity:  0.08, fuel:  57.7
+time:   37, To other panel:, dist to target:  0.90, % to target:  64.7, velocity:  0.08, fuel:  56.7
+time:   38, To other panel:, dist to target:  0.81, % to target:  58.6, velocity:  0.08, fuel:  56.3
+time:   39, To other panel:, dist to target:  0.73, % to target:  52.6, velocity:  0.08, fuel:  56.1
+time:   40, To other panel:, dist to target:  0.65, % to target:  46.8, velocity:  0.08, fuel:  55.6
+time:   41, To other panel:, dist to target:  0.57, % to target:  41.2, velocity:  0.08, fuel:  54.8
+time:   42, To other panel:, dist to target:  0.50, % to target:  36.1, velocity:  0.07, fuel:  53.7
+time:   43, To other panel:, dist to target:  0.43, % to target:  31.3, velocity:  0.07, fuel:  52.4
+time:   44, To other panel:, dist to target:  0.37, % to target:  26.9, velocity:  0.06, fuel:  50.9
+time:   45, To other panel:, dist to target:  0.32, % to target:  22.9, velocity:  0.05, fuel:  49.3
+time:   46, To other panel:, dist to target:  0.27, % to target:  19.4, velocity:  0.05, fuel:  47.7
+time:   47, To other panel:, dist to target:  0.22, % to target:  16.2, velocity:  0.04, fuel:  46.0
+time:   48, To other panel:, dist to target:  0.19, % to target:  13.4, velocity:  0.04, fuel:  44.5
+time:   49, To other panel:, dist to target:  0.15, % to target:  11.0, velocity:  0.03, fuel:  43.0
+time:   50, To other panel:, dist to target:  0.12, % to target:   8.9, velocity:  0.03, fuel:  41.7
+time:   51, To other panel:, dist to target:  0.10, % to target:   7.1, velocity:  0.02, fuel:  40.6
+time:   52, To other panel:, dist to target:  0.08, % to target:   5.6, velocity:  0.02, fuel:  39.7
+time:   53, To other panel:, dist to target:  0.06, % to target:   4.4, velocity:  0.02, fuel:  38.9
+time:   54, To other panel:, dist to target:  0.05, % to target:   3.3, velocity:  0.01, fuel:  38.1
+time:   55, To other panel:, dist to target:  0.03, % to target:   2.4, velocity:  0.01, fuel:  37.3
+time:   56, To other panel:, dist to target:  0.02, % to target:   1.7, velocity:  0.01, fuel:  36.7
+
