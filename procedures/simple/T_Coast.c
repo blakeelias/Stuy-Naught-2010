@@ -1,6 +1,3 @@
-#define CLOSE     0.1
-#define MAGNITUDE 0.02
-
 #include "S_Macros.c"
 
 //Coasts to a target, in absolute coordinates.
