@@ -7,7 +7,7 @@ VCopy(station, target);
 target[1] += cosf(station[3]) * DOCK_DISTANCE;
 target[2] += sinf(station[3]) * DOCK_DISTANCE;
 
-SET_POSITION_TARGET(target);
+CoastToTarget(myState, target);
 
 target[0] = 0;
 target[1] = cosf(station[3]);
