@@ -1,7 +1,6 @@
 // TurnTest4.c
 
 // global: float previous_att[3]
-// global: float pos[3]
 
 //Vfunc defines...
 

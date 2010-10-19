@@ -1,6 +1,17 @@
 //Code to beeline towards the station...
 
-
-//Do something about this part
 getStationState(station);
-SET_POSITION_TARGET(station);
+
+VCopy(station, target);
+
+target[1] += cosf(station[3]) * DOCK_DISTANCE;
+target[2] += sinf(station[3]) * DOCK_DISTANCE;
+
+SET_POSITION_TARGET(target);
+
+target[0] = 0;
+target[1] = cosf(station[3]);
+target[2] = sinf(station[3]);
+
+SET_ATTITUDE_TARGET(target);
+

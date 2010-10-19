@@ -10,7 +10,7 @@
  *
  *      for instance, to retrieve the current SPHERE properties (for the current timeSlot),
  *        allocate 3 arrays, and call:
- *      float me[12],other[12],restOfProperties[12];
+ *      float me[12],other[12],restOfProperties[13];
  *      HistFunc(1, me, other, restOfProperties, G_time);
  *        and me[] will be filled with myState, other with otherState, and restOfProperties with the rest
  *
@@ -21,7 +21,10 @@
 int HistFunc(int which, float *myState, float *otherState, float *rest, int timeSlot)
 {
 */
-    int width = 36;
+
+// include defines.h
+
+    int width = H_FRAME;
     float pos[3] = {0,0,0};
     int i,k;
     float otherPos[3];
@@ -63,8 +66,8 @@ int HistFunc(int which, float *myState, float *otherState, float *rest, int time
         history[width*timeSlot+35] = 1;
     else
         history[width*timeSlot+35] = 0;
-        
-        
+
+    history[width*timeSlot+36] = G_state;    
 
     return 1;
     }
@@ -74,7 +77,7 @@ int HistFunc(int which, float *myState, float *otherState, float *rest, int time
             myState[k] = history[i];
         for (i = timeSlot*width+12, k = 0; k < 12; ++i, ++k)
             otherState[k] = history[i];
-        for (i = timeSlot*width+24, k = 0; k < 12; ++i, ++k)
+        for (i = timeSlot*width+24, k = 0; k < H_FRAME-24; ++i, ++k)
             rest[k] = history[i];
         return 1;
     }
@@ -133,6 +136,7 @@ int HistFunc(int which, float *myState, float *otherState, float *rest, int time
 9: Are you being repelled (1 = yes, 0 = no)
 10: Are you outside the Boundary (1 = yes, 0 = no)         
 11: Is the opponent within your cone of sight? (1 = yes, 0 = no)
+12: G_state
 
 */
 

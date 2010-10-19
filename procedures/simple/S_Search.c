@@ -2,14 +2,18 @@
 
 #include "S_CheckPanel.c"
 
-target[0] = 0;
-target[1] = tangentPoints[scanTarget + 1];
-target[2] = tangentPoints[scanTarget + 2];
+#define COORD myState
+#include "S_Tangent.c"
+#undef COORD
 
-SET_ATTITUDE_TARGET(target);
+#include "S_Target.c"
 
-if (fabs(VAngle(&myState[6], target)) < 9.0)
- scanTarget = 3 - scanTarget;
+tangentPoints[2] += scanTarget * SEARCH_ANGULAR_VELOCITY;
+
+if ((scanTarget == 1) && (tangentPoints[2] >= tangentPoints[1]))
+ scanTarget = -1;
+else if ((scanTarget == -1) && (tangentPoints[2] <= tangentPoints[0]))
+ scanTarget = 1;
 
 target[0] = getPanelSide() * 0.7;
 target[1] = myState[1];

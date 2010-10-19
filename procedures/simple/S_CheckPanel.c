@@ -1,14 +1,17 @@
-//Check if panel was found
+//Check if panel was found.
 
 if (isPanelFound())
 {
  getPanelState(panelState);
 
 
-//Do something to make this "in front of panel"
  panelState[4] = panelState[0];
- panelState[5] = panelState[1];
- panelState[6] = panelState[2];
+
+ baseAngle = atan2f(panelState[2], panelState[1]);
+ baseRadius = sqrtf(SQ(panelState[1]) + SQ(panelState[2])) - DOCK_DISTANCE;
+
+ panelState[5] = cosf(baseAngle) * baseRadius;
+ panelState[6] = sinf(baseAngle) * baseRadius;
 
  state = STATE_TOPANEL;
  break;
