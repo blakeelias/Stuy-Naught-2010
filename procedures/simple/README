@@ -1,8 +1,8 @@
 To test this AI, "cd" into this directory and run "make". Copy
-and paste the functions in the resulting files "out.c" and
-"out2.c" into the ZeroRobotics IDE. You will need to have this
-entire directory to "make" "out.c" and "out2.c" successfully.
-You will also need Brooks' Vfunc.
+and paste the code in the resulting file "out.c" into the
+ZeroRobotics IDE. You will need to have this entire directory
+to "make" "out.c" successfully. You will also need Brooks'
+Vfunc.
 
 
 
@@ -29,19 +29,10 @@ then in front of the station to dock with that. The target
 distance from the panel/station is controlled by a macro in
 S_Macros.c (DOCK_DISTANCE).
 
-4) Since it's impossible for the satellite to be exactly at a
+Since it's impossible for the satellite to be exactly at a
 position, it must be willing to tolerate some degree of error.
 This tolerance is controlled by... Ah, you get the point
 (ERROR_TOLERANCE).
-
-5) After docking with the panel, the satellite slowly coasts to
-its station by controlling its velocity (with error checking).
-Once it gets close enough, it halts by setting its position
-target. How close is close? You guessed it - Controlled by a
-macro (CLOSE).
-
-6) The magnitude of the satellite's target velocity is set with
-MAGNITUDE.
 
 
 

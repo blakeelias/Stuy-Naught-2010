@@ -2,7 +2,7 @@
 
 if (iHavePanel())
 {
- state = STATE_ZAP;
+ state = STATE_TOSTATION;
  scanTarget = 0;
  break;
 }
