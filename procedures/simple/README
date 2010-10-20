@@ -34,6 +34,15 @@ position, it must be willing to tolerate some degree of error.
 This tolerance is controlled by... Ah, you get the point
 (ERROR_TOLERANCE).
 
+5) After docking with the panel, the satellite slowly coasts to
+its station by controlling its velocity (with error checking).
+Once it gets close enough, it halts by setting its position
+target. How close is close? You guessed it - Controlled by a
+macro (CLOSE).
+
+6) The magnitude of the satellite's target velocity is set with
+MAGNITUDE.
+
 
 
 Experimentation is needed to see which set of constants should
