@@ -25,12 +25,19 @@
 //its target position, it will tolerate the error.
 #define ERROR_TOLERANCE         0.1
 
+//How close is "close to my target"?
+#define CLOSE     0.1
+
+//Magnitude of the set velocity with CoastToTarget
+#define MAGNITUDE 0.02
+
 //Add more states as necessary
 #define STATE_INIT        0
 #define STATE_PREP        1
 #define STATE_SEARCHING   2
 #define STATE_TOPANEL     3
-#define STATE_TOSTATION   4
+#define STATE_ZAP	  4
+#define STATE_TOSTATION   5
 
 
 
