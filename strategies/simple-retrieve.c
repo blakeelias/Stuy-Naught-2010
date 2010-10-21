@@ -15,7 +15,7 @@
  */
 
 int state = 0;
-float procvar[1000];
+float procvar[4] = 0;
 
 void RotateTarget(float * myState, float * pos) {
     #define VLen(a)              Vfunc(0, (a), NULL, NULL, 0)
@@ -62,7 +62,6 @@ void RotateTarget(float * myState, float * pos) {
 }
 
 void ZRUser(float * myState, float * otherState, float time) {
-    procvar[0] = time;
     printf("time: %3.0f, state: %d, pos: (%5.2f, %5.2f, %5.2f), ",
            time, state, myState[0], myState[1], myState[2]);
     printf("att: (%5.2f, %5.2f, %5.2f), panel: %d, ",
@@ -92,30 +91,30 @@ void ZRUser(float * myState, float * otherState, float time) {
         ZRSetPositionTarget(panel_center);
         if (isPanelFound()) {
             getPanelState(panel_location);
-            procvar[200] = panel_location[0];
-            procvar[201] = panel_location[1];
-            procvar[202] = panel_location[2];
-            Vfunc(9, myState, procvar+200, procvar+200, 0);
-            ZRSetAttitudeTarget(procvar+200);
+            procvar[0] = panel_location[0];
+            procvar[1] = panel_location[1];
+            procvar[2] = panel_location[2];
+            Vfunc(9, myState, procvar, procvar, 0);
+            ZRSetAttitudeTarget(procvar+1);
             state = 3;
         }
     }
     if (state == 3) {
         float attitude_rate;
-        ZRSetAttitudeTarget(procvar+200);
+        ZRSetAttitudeTarget(procvar);
         attitude_rate = Vfunc(0, myState+9, NULL, NULL, 0);
         printf("att_rate: %3.5f\n", attitude_rate);
         if (isPanelFound())
-            procvar[300]++;
-        else procvar[300] = 0;
-        if (procvar[300] > 10)
+            procvar[3]++;
+        else procvar[3] = 0;
+        if (procvar[3] > 10)
             state = 4;
     }
     if (state == 4) {
-        ZRSetAttitudeTarget(procvar+200);
+        ZRSetAttitudeTarget(procvar);
         if (isPanelFound()) {
             float velocity[3];
-            Vfunc(4, procvar+200, NULL, velocity, .01);
+            Vfunc(4, procvar, NULL, velocity, .01);
             ZRSetVelocityTarget(velocity);
         }
         if (iHavePanel())
