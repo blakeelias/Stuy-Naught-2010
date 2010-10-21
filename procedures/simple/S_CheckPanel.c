@@ -13,7 +13,7 @@ if (isPanelFound())
  panelState[5] = cosf(baseAngle) * baseRadius;
  panelState[6] = sinf(baseAngle) * baseRadius;
 
- state = STATE_CHARGE;
+ state = STATE_TOPANEL;
  break;
 }
 

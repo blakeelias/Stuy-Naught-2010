@@ -15,6 +15,7 @@ void ZRUser(float* myState, float* otherState, float time)
 
  float a1, a2;
 
+ printf("time: %4.0f, state: %d\n", time, state);
  switch (state)
  {
   case STATE_INIT:
