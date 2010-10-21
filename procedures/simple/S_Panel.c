@@ -2,16 +2,16 @@
 
 if (iHavePanel())
 {
- state = STATE_ZAP;
+ state = STATE_TOSTATION;
  scanTarget = 0;
  break;
 }
 
 SET_POSITION_TARGET(&panelState[4]);
 
-VCopy(panelState, target);
-target[0] = 0;
-VUnit(target, target);
+VCopy(panelState, target_pos);
+target_pos[0] = 0;
+VUnit(target_pos, target_pos);
 
-SET_ATTITUDE_TARGET(target);
+SET_ATTITUDE_TARGET(target_pos);
 

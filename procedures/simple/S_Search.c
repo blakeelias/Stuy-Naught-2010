@@ -15,9 +15,9 @@ if ((scanTarget == 1) && (tangentPoints[2] >= tangentPoints[1]))
 else if ((scanTarget == -1) && (tangentPoints[2] <= tangentPoints[0]))
  scanTarget = 1;
 
-target[0] = getPanelSide() * 0.7;
-target[1] = myState[1];
-target[2] = myState[2];
+target_pos[0] = getPanelSide() * 0.7;
+target_pos[1] = myState[1];
+target_pos[2] = myState[2];
 
-SET_POSITION_TARGET(target);
+SET_POSITION_TARGET(target_pos);
 
