@@ -3,12 +3,15 @@
 
 void ZRUser(float* myState, float* otherState, float time)
 {
- float target[3];
  float station[4];
 
  float baseAngle;
  float angleDiff;
  float baseRadius;
+
+ float to_opponent[3];
+ float sun[3] = {0,0,0};
+ float tolerance=.02;
 
  float a1, a2;
 

@@ -9,13 +9,13 @@ if (fabs(myState[0] - targetX) < ERROR_TOLERANCE)
 
 baseAngle = atan2f(myState[2], myState[1]);
 
-target[0] = targetX;
-target[1] = cosf(baseAngle) * SEARCH_DISTANCE;
-target[2] = sinf(baseAngle) * SEARCH_DISTANCE;
+target_pos[0] = targetX;
+target_pos[1] = cosf(baseAngle) * SEARCH_DISTANCE;
+target_pos[2] = sinf(baseAngle) * SEARCH_DISTANCE;
 
-SET_POSITION_TARGET(target);
+SET_POSITION_TARGET(target_pos);
 
-#define COORD target
+#define COORD target_pos
 #include "S_Tangent.c"
 #undef COORD
 #undef targetX
