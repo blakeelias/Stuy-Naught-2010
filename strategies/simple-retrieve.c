@@ -68,9 +68,19 @@ void ZRUser(float * myState, float * otherState, float time) {
            myState[6], myState[7], myState[8], isPanelInSync());
     
     if (state == 0) {
-        float attitude[3] = {0, 1, 0};
+        //float attitude[3] = {0, 1, 0};
+        float attitude[3];
+        attitude[0] = 0;
+        attitude[1] = 1;
+        attitude[2] = 0;
+
         float panel_center_distance;
-        float panel_center[3] = {.7*getPanelSide(), 0, 0};
+        /*float panel_center[3] = {.7*getPanelSide(), 0, 0};*/
+        float panel_center[3];
+        panel_center[0] = .7*getPanelSide();
+        panel_center[1] = 0;
+        panel_center[2] = 0;
+
         
         ZRSetPositionTarget(panel_center);
         ZRSetAttitudeTarget(attitude);
@@ -80,13 +90,23 @@ void ZRUser(float * myState, float * otherState, float time) {
             state = 1;
     }
     if (state == 1) {
-        float panel_center[3] = {.7*getPanelSide(), 0, 0};
+        /*float panel_center[3] = {.7*getPanelSide(), 0, 0};*/
+        float panel_center[3];
+        panel_center[0] = .7*getPanelSide();
+        panel_center[1] = 0;
+        panel_center[2] = 0;
+
         RotateTarget(myState, panel_center);
         if (isPanelFound())
             state = 2;
     }
     if (state == 2) {
-        float panel_center[3] = {.7*getPanelSide(), 0, 0};
+        /*float panel_center[3] = {.7*getPanelSide(), 0, 0};*/
+        float panel_center[3];
+        panel_center[0] = .7*getPanelSide();
+        panel_center[1] = 0;
+        panel_center[2] = 0;
+
         float panel_location[4];
         ZRSetPositionTarget(panel_center);
         if (isPanelFound()) {
@@ -122,8 +142,18 @@ void ZRUser(float * myState, float * otherState, float time) {
     }
     if (state == 5) {
         if (iHavePanel()) {
-            float station[3] = {-.7*getPanelSide(), 0, 0};
-            float station_attitude[3] = {0, 0, 1*getPanelSide()};
+            /*float station[3] = {-.7*getPanelSide(), 0, 0};*/
+            float station[3];
+            station[0] = -.7*getPanelSide();
+            station[1] = 0;
+            station[2] = 0;
+
+            /*float station_attitude[3] = {0, 0, 1*getPanelSide()};*/
+            float station_attitude[3];
+            station_attitude[0] = 0;
+            station_attitude[1] = 0;
+            station_attitude[2] = 1*getPanelSide();
+
             float station_distance;
             ZRSetPositionTarget(station);
             ZRSetAttitudeTarget(station_attitude);
@@ -134,8 +164,18 @@ void ZRUser(float * myState, float * otherState, float time) {
     }
     if (state == 6) {
         if (iHavePanel()) {
-            float station_attitude[3] = {0, 0, 1*getPanelSide()};
-            float station_position[3] = {-.7*getPanelSide(), 0, 0};
+            /*float station_attitude[3] = {0, 0, 1*getPanelSide()};*/
+            float station_attitude[3];
+            station_attitude[0] = 0;
+            station_attitude[1] = 0;
+            station_attitude[2] = 1*getPanelSide();
+
+            /*float station_position[3] = {-.7*getPanelSide(), 0, 0};*/
+            float station_position[3];
+            station_position[0] = -.7*getPanelSide();
+            station_position[1] = 0;
+            station_position[2] = 0;
+
             ZRSetPositionTarget(station_position);
             ZRSetAttitudeTarget(station_attitude);
         }
