@@ -66,6 +66,8 @@ float Vfunc(int which, float *v1, float *v2, float *vresult, float scalar)
 
 */
 
+#define prvect(msg,p)    printf("%s (%f,%f,%f)\n",msg,p[0],p[1],p[2])
+
 	int i;
 	
 	if (which == 0) // returns |v1|
@@ -77,13 +79,15 @@ float Vfunc(int which, float *v1, float *v2, float *vresult, float scalar)
 	}
 
 	if (which == 2) { // vresult = v1 - v2
-		Vfunc(4,v2,NULL,v2,-1);
-		mathVecAdd(vresult,v1,v2,3);
+        float vtemp[3];
+		Vfunc(4,v2,NULL,vtemp,-1);
+		mathVecAdd(vresult,v1,vtemp,3);
 		return 0;
 	}
 
 	if (which == 3) { // vresult = v1 / |v1|; if |v1| == 0, returns 0, else 1
-		mathVecNormalize(v1,3);
+		memcpy(vresult, v1, sizeof(float)*3);
+		mathVecNormalize(vresult,3);
 		return 0;
 	}
 
