@@ -38,7 +38,8 @@
 #define STATE_ZAP         3
 #define STATE_SEARCHING   4
 #define STATE_TOPANEL     5
-#define STATE_TOSTATION   6
+#define STATE_CAMP        6
+#define STATE_TOSTATION   7
 
 
 

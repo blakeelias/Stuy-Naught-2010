@@ -36,6 +36,9 @@ void ZRUser(float* myState, float* otherState, float time)
   case STATE_TOPANEL:
 #include "S_Panel.c"
    break;
+ case STATE_CAMP:
+#include "S_Camp.c"
+   break;
   case STATE_TOSTATION:
 #include "S_Station.c"
    break;
