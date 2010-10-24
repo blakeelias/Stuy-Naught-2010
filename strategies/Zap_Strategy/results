@@ -1,0 +1,13 @@
+Test results for Zap_Strategy:
+
+Run as: SPH1
+Opponent: Default Opponent 1 [ZR AI] 
+
+
+Time - Events:
+34.1 - SPH1 has repelled once already, and is in the process of continuously repelling SPH2. 71% fuel remaining, SPH2 has 60%. 
+49-50 - SPH1 has 40% charge left, last four repels seem to do nothing. 
+83.8 - SPH2 runs out of fuel, SPH1 has 38% fuel remaining, has docked the panel. (Final position: -.70, -0.00, -0.01).
+106.8 - SPH1 has 21% fuel, drifts to state
+145.8 - SPH1 has 19% fuel, starts moving down, for some odd reason (which I believe is due to possible collision)
+164.0 - SPH1 runs out of fuel, final position: (-.62, .06, .23) - This is way lower than where we are normally.
