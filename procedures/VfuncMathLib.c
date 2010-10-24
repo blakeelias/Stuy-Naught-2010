@@ -136,7 +136,7 @@ float Vfunc(int which, float *v1, float *v2, float *vresult, float scalar)
 		float s = sinf(ang);
 		float rot[3];
 		
-		if (ang > Vfunc(8,v1,v2,NULL,0)) {
+		if (scalar > Vfunc(8,v1,v2,NULL,0)) {
 			return 1;
 		}
 	
