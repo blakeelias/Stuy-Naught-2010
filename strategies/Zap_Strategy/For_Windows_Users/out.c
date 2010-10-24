@@ -53,16 +53,13 @@ void ZRUser(float* myState, float* otherState, float time)
  float baseRadius;
 
  float to_opponent[3];
- /*float sun[3] = {0,0,0};*/
- float sun[3];
- sun[0] = 0;
- sun[1] = 0;
- sun[2] = 0;
+ float sun[3] = {0,0,0};
+
  float tolerance=.02;
 
  float a1, a2;
 
- printf("time: %4.0f, state: %d\n", time, state);
+ DEBUG(("time: %4.0f, state: %d\n", time, state));
  switch (state)
  {
   case 0:
@@ -94,7 +91,7 @@ ZRSetAttitudeTarget(target_att);
 //Code to find tangent lines...
 
 baseAngle = atan2f(-target_pos[2], -target_pos[1]);
-angleDiff = asinf(0.5 / sqrtf(((target_pos[1]) * (target_pos[1])) + ((target_pos[2]) * (target_pos[2]))));
+angleDiff = asinf(0.5 / sqrtf(mathSquare(target_pos[1]) + mathSquare(target_pos[2])));
 
 tangentPoints[0] = baseAngle - angleDiff;
 tangentPoints[1] = baseAngle + angleDiff;
@@ -123,7 +120,7 @@ Vfunc(9, (myState), (otherState), (to_opponent), 0);
 
 ZRSetAttitudeTarget(to_opponent);
 
-if(fabs(otherState[0] - (getPanelSide() * -0.7)) < 0.02){
+if(fabs(otherState[0] - (getPanelSide() * -0.7)) < tolerance){
  state = 4;
  break;
 }
@@ -132,7 +129,7 @@ if(fabs(otherState[0] - (getPanelSide() * -0.7)) < 0.02){
 ZRSetPositionTarget(target_pos);
 Vfunc(9, (myState), (otherState), (to_opponent), 0);
 if (Vfunc(8, (to_opponent), (myState+6), NULL, 0) < 5 && getPercentChargeRemaining() > 0) {
-    printf("time: %4.0f, (BLUE): ZAPPING ++++++++++++++++++++\n",time);
+    DEBUG(("time: %4.0f, (BLUE): ZAPPING ++++++++++++++++++++\n",time));
     ZRRepel();
 }
 else {
@@ -141,7 +138,7 @@ else {
         break;
     }
     Vfunc(9, (myState), (otherState), (to_opponent), 0);
-    printf("time: %4.0f, (BLUE): angle to opponent: %f\n",time,Vfunc(8, (to_opponent), (myState+3), NULL, 0));
+    DEBUG(("time: %4.0f, (BLUE): angle to opponent: %f\n",time,Vfunc(8, (to_opponent), (myState+3), NULL, 0)));
     ZRSetAttitudeTarget(to_opponent);
 }
    break;
@@ -158,7 +155,7 @@ if (isPanelFound())
  panelState[4] = panelState[0];
 
  baseAngle = atan2f(panelState[2], panelState[1]);
- baseRadius = sqrtf(((panelState[1]) * (panelState[1])) + ((panelState[2]) * (panelState[2]))) - 0.03;
+ baseRadius = sqrtf(mathSquare(panelState[1]) + mathSquare(panelState[2])) - 0.03;
 
  panelState[5] = cosf(baseAngle) * baseRadius;
  panelState[6] = sinf(baseAngle) * baseRadius;
@@ -171,7 +168,7 @@ if (isPanelFound())
 //Code to find tangent lines...
 
 baseAngle = atan2f(-myState[2], -myState[1]);
-angleDiff = asinf(0.5 / sqrtf(((myState[1]) * (myState[1])) + ((myState[2]) * (myState[2]))));
+angleDiff = asinf(0.5 / sqrtf(mathSquare(myState[1]) + mathSquare(myState[2])));
 
 tangentPoints[0] = baseAngle - angleDiff;
 tangentPoints[1] = baseAngle + angleDiff;
