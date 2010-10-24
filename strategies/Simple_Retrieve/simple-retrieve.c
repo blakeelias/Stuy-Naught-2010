@@ -1,4 +1,5 @@
 /**
+ * Code Size: 114%
  * Simulate with game variables, exits with status 20 / opponent 40
  * Around 20% fuel left, 88 seconds elapsed
  * 
