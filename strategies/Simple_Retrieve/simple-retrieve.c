@@ -133,8 +133,8 @@ void ZRUser(float * myState, float * otherState, float time) {
     if (state == 4) {
         ZRSetAttitudeTarget(procvar);
         if (isPanelFound()) {
-            float velocity[3];
-            Vfunc(4, procvar, NULL, velocity, .01);
+            /*float velocity[3];*/
+            /*Vfunc(4, procvar, NULL, velocity, .01);*/
             /*ZRSetVelocityTarget(velocity);*/
             ZRSetPositionTarget(procvar);
         }
