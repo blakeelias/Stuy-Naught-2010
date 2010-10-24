@@ -1,0 +1,16 @@
+//Code fragment for breaking up a rotation into smaller segments
+
+
+float zeno_factor[3] = {.5, .5, .5} ;  // reduction factor for target attitude  0 is no reduction
+float zeno_target_attitude[3];    // attitude angle applied
+
+// attTarget is a position
+// targert_attiude is a vector to it
+
+
+Vfunc(9,current_position,attTarget,target_attitude,1);   // find target attitude
+Vfunc(2,current_attitude,target_attitude,diff_attitude,0); // subtract to find differnce
+Vfunc(5,diff_attitude,zeno_factor,diff_attitude,0);        // multiply to find a portion of the difference
+Vfunc(2,target_attitude,diff_attitude,zeno_target_attitude,0);    // reduce the final by the portion
+
+ZRSetAttitudeTarget(zeno_target_attitude); 

@@ -10,18 +10,13 @@ void ZRUser(float* myState, float* otherState, float time)
  float baseRadius;
 
  float to_opponent[3];
- /*float sun[3] = {0,0,0};*/
- float sun[3];
- sun[0] = 0; 
- sun[1] = 0; 
- sun[2] = 0; 
-
+ float sun[3] = {0,0,0};
 
  float tolerance=.02;
 
  float a1, a2;
 
- printf("time: %4.0f, state: %d\n", time, state);
+ DEBUG(("time: %4.0f, state: %d\n", time, state));
  switch (state)
  {
   case STATE_INIT:

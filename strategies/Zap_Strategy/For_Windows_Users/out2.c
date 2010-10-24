@@ -46,7 +46,7 @@ void CoastToTarget(float* myPos, float* coastTarget)
 
  Vfunc(2, (coastTarget), (myPos), (temp), 0);
 
- if (Vfunc(0, (temp), NULL, NULL, 0) < 0.1)
+ if (mathVecMagnitude((temp), 3) < 0.1)
  {
   ZRSetPositionTarget(coastTarget);
  }
