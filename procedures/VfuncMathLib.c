@@ -56,6 +56,12 @@
  *    Unit vector pointing from v1 to v2:
  *       which == 9: vresult is the unit vector pointing from position v1 toward position v2
  *       Vfunc(9,a1,a2,a3,0);   // a3 will be the unit vector
+ *    
+ *    Rotate v1 towards v2:
+ *       which == 10: vresult is vector v1 rotated scalar degrees towards v2
+ *       scalar degrees must be less than the angle between the two vectors
+ *       Vfunc(10,v1,v2,result,angle);
+ *       Note: returns 0 if successful, 1 if the angle is too large
 */
 
 /* Copy function header:
@@ -121,6 +127,35 @@ float Vfunc(int which, float *v1, float *v2, float *vresult, float scalar)
 	    float v9[3];
 	    Vfunc(2,v2,v1,v9,0);
 	    return Vfunc(3,v9,NULL,vresult,0);
+	}
+	
+	if (which ==10) { // rotated vector v1 towards v2 at scalar degrees
+		float ang = scalar*3.14159265/180;
+		float u[3];
+		float c = cosf(ang);
+		float s = sinf(ang);
+		float rot[3];
+		
+		if (ang > Vfunc(8,v1,v2,NULL,0)) {
+			return 1;
+		}
+	
+		mathVecCross(u,v1,v2);
+		mathVecNormalize(u,3);
+		rot[0] = (v1[0](c + u[0] * u[0] * (1-c)) + v1[1](u[0] * u[1] * (1-c) - u[2] * s) + v1[2](u[0] * u[2] * (1-c) + u[1] * s));
+		rot[1] = (v1[0](u[0] * u[1] * (1-c) + u[2] * s) + v1[1](c + u[1] * u[1] * (1-c)) + v1[2](u[1] * u[2] * (1-c) - u[0] * s));
+		rot[2] = (v1[0](u[0] * u[2] * (1-c) - u[1] * s) + v1[1](u[1] * u[2] * (1-c) + u[0] * s) + v1[2](c + u[2] * u[2] * (1-c))); 
+	
+		if (Vfunc(8,rot,v1,NULL,0) < Vfunc(8,v1,v2,NULL,0) && Vfunc(8,rot,v2,NULL,0) < Vfunc(8,v1,v2,NULL,0)) {	
+			c = cosf(-1*ang);
+			s = sinf(-1*ang);
+			rot[0] = (v1[0](c + u[0] * u[0] * (1-c)) + v1[1](u[0] * u[1] * (1-c) - u[2] * s) + v1[2](u[0] * u[2] * (1-c) + u[1] * s));
+			rot[1] = (v1[0](u[0] * u[1] * (1-c) + u[2] * s) + v1[1](c + u[1] * u[1] * (1-c)) + v1[2](u[1] * u[2] * (1-c) - u[0] * s));
+			rot[2] = (v1[0](u[0] * u[2] * (1-c) - u[1] * s) + v1[1](u[1] * u[2] * (1-c) + u[0] * s) + v1[2](c + u[2] * u[2] * (1-c)));
+		}
+	
+		memcpy(vresult,rot,sizeof(float)*3);
+		return 0;
 	}
 	
 //}
