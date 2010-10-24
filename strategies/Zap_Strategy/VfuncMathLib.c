@@ -70,13 +70,6 @@ float Vfunc(int which, float *v1, float *v2, float *vresult, float scalar)
 
 	int i;
 	
-	if (which == 0) // returns |v1|
-		return mathVecMagnitude(v1, 3);
-
-	if (which == 1) { // vresult = V1 + v2
-		mathVecAdd(vresult,v1,v2,3);
-		return 0;
-	}
 
 	if (which == 2) { // vresult = v1 - v2
         float vtemp[3];
@@ -97,10 +90,6 @@ float Vfunc(int which, float *v1, float *v2, float *vresult, float scalar)
 		return 0;
 	}
 
-	if (which == 5) { // returns dot product: v1 * v2
-		return mathVecInner(v1,v2,3);
-	}
-
 	if (which == 6) { // returns distance between v1 and v2
 		float v3[3];
 		Vfunc(2,v1,v2,v3,0);  // v3 = v1 - v2
@@ -113,7 +102,7 @@ float Vfunc(int which, float *v1, float *v2, float *vresult, float scalar)
 	}
 
 	if (which == 8) { // angle between two vectors
-	    float dot = Vfunc(5,v1,v2,NULL,0)/(Vfunc(0,v1,NULL,NULL,0)*Vfunc(0,v2,NULL,NULL,0));
+	    float dot = mathVecInner(v1,v2,3)/(mathVecMagnitude(v1,3)*mathVecMagnitude(v2,3));
 	    return acos(dot)*180.0/3.14159265;
 	}
 
