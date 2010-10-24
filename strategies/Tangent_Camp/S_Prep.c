@@ -3,7 +3,7 @@
 #define targetX (getPanelSide() * 0.7)
 
 if (fabs(myState[0] - targetX) < ERROR_TOLERANCE)
- state = STATE_CHARGE;
+ state = STATE_SEARCHING;
 
 baseAngle = atan2f(myState[2], myState[1]);
 
@@ -12,10 +12,6 @@ target_pos[1] = cosf(baseAngle) * SEARCH_DISTANCE;
 target_pos[2] = sinf(baseAngle) * SEARCH_DISTANCE;
 
 SET_POSITION_TARGET(target_pos);
-
-VPoint(sun,myState,target_att);
-
-SET_ATTITUDE_TARGET(target_att);
 
 #define COORD target_pos
 #include "S_Tangent.c"
