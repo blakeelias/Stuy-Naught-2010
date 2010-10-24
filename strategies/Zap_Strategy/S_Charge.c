@@ -1,5 +1,5 @@
 if (getPercentChargeRemaining() >= 95) {
-    state = STATE_ZAP;
+    state = STATE_WAIT;
     break;
 } else {
     // calc vector from current position back toward sun

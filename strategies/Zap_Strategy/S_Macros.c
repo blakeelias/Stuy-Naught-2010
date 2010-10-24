@@ -35,12 +35,11 @@
 #define STATE_INIT        0
 #define STATE_PREP        1
 #define STATE_CHARGE      2
-#define STATE_ZAP         3
-#define STATE_SEARCHING   4
-#define STATE_TOPANEL     5
-#define STATE_TOSTATION   6
-
-
+#define STATE_WAIT	  3
+#define STATE_ZAP         4
+#define STATE_SEARCHING   5
+#define STATE_TOPANEL     6
+#define STATE_TOSTATION   7
 
 //Avoid touching anything beyond this point
 #define SQ(a) ((a) * (a))
