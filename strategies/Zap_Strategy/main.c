@@ -27,6 +27,9 @@ void ZRUser(float* myState, float* otherState, float time)
   case STATE_CHARGE:
 #include "S_Charge.c"
    break;
+  case STATE_WAIT:
+#include "S_Wait.c"
+   break;
  case STATE_ZAP:
 #include "S_Zap.c"
    break;
