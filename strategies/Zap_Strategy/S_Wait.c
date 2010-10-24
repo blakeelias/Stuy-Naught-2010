@@ -6,7 +6,7 @@ VPoint(myState,otherState,to_opponent);
 
 ZRSetAttitudeTarget(to_opponent);
 
-if(otherState[0] == otherTargetX){
+if(fabs(otherState[0] - otherTargetX) < 0.02){
 	state = STATE_ZAP;
 	break;
 }
