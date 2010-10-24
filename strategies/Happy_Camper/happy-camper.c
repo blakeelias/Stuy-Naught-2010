@@ -1,18 +1,3 @@
-/*
- * Simulation settings:
- *    Simulate as: SPH1
- *    Maximum Time: 210 seconds
- *    Game Variables: generate from game
- *    Positioning: set from game variables
- *
- * Result codes:
- *    SPH1 = 20
- *    SPH2 = 40
- *
- * Other results:
- *    Total time elapsed: 114 seconds
- *    Fuel remaining: 18%
- */
 
 int state = 0;
 float procvar[4] = 0;
@@ -120,24 +105,23 @@ void ZRUser(float * myState, float * otherState, float time) {
         if (iHavePanel())
             state = 5;
     }
-    if (state == 5) {
-        if (iHavePanel()) {
-            float station[3] = {-.7*getPanelSide(), 0, 0};
-            float station_attitude[3] = {0, 0, 1*getPanelSide()};
-            float station_distance;
-            ZRSetPositionTarget(station);
-            ZRSetAttitudeTarget(station_attitude);
-            station_distance = Vfunc(6, myState, station, NULL, 0);
-            if (station_distance < 0.01)
-                state = 6;
-        }
+    if (state == 5){
+      procvar[1] = -.2 * getPanelSide();
+      procvar[2] = 0;
+      procvar[3] = 0;
+      ZRSetPosition(procvar + 1);
+      procvar[1] -= myState[0];
+      procvar[2] = myState[1];
+      procvar[3] = myState[2];
+      if (Vfunc(0,procvar[1],NULL,NULL,0) < .01)
+	state = 6;
     }
-    if (state == 6) {
-        if (iHavePanel()) {
-            float station_attitude[3] = {0, 0, 1*getPanelSide()};
-            float station_position[3] = {-.7*getPanelSide(), 0, 0};
-            ZRSetPositionTarget(station_position);
-            ZRSetAttitudeTarget(station_attitude);
-        }
-    }
+    if (state == 6){
+      procvar[1] = getPanelSide();
+      procvar[2] = 0;
+      procvar[3] = 0;
+      ZRSetAttitudeTarget(procvar[1]);
+      //should change state if:
+      //  done charging
+      //  opponent breaks plane
 }
