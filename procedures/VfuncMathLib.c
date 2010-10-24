@@ -129,29 +129,31 @@ float Vfunc(int which, float *v1, float *v2, float *vresult, float scalar)
 	    return Vfunc(3,v9,NULL,vresult,0);
 	}
 	
-	if (which ==10) { // rotated vector v1 towards v2 at scalar degrees
+	if (which == 10) { // rotated vector v1 towards v2 at scalar degrees
 		float ang = scalar*3.14159265/180;
 		float u[3];
 		float c = cosf(ang);
 		float s = sinf(ang);
 		float rot[3];
+		mathVecNormalize(v1,3);
+		mathVecNormalize(v2,3);
 		
 		if (scalar > Vfunc(8,v1,v2,NULL,0)) {
 			return 1;
 		}
-	
+		
 		mathVecCross(u,v1,v2);
 		mathVecNormalize(u,3);
-		rot[0] = (v1[0](c + u[0] * u[0] * (1-c)) + v1[1](u[0] * u[1] * (1-c) - u[2] * s) + v1[2](u[0] * u[2] * (1-c) + u[1] * s));
-		rot[1] = (v1[0](u[0] * u[1] * (1-c) + u[2] * s) + v1[1](c + u[1] * u[1] * (1-c)) + v1[2](u[1] * u[2] * (1-c) - u[0] * s));
-		rot[2] = (v1[0](u[0] * u[2] * (1-c) - u[1] * s) + v1[1](u[1] * u[2] * (1-c) + u[0] * s) + v1[2](c + u[2] * u[2] * (1-c))); 
+		rot[0] = (v1[0]*(c + u[0] * u[0] * (1-c)) + v1[1]*(u[0] * u[1] * (1-c) - u[2] * s) + v1[2]*(u[0] * u[2] * (1-c) + u[1] * s));
+		rot[1] = (v1[0]*(u[0] * u[1] * (1-c) + u[2] * s) + v1[1]*(c + u[1] * u[1] * (1-c)) + v1[2]*(u[1] * u[2] * (1-c) - u[0] * s));
+		rot[2] = (v1[0]*(u[0] * u[2] * (1-c) - u[1] * s) + v1[1]*(u[1] * u[2] * (1-c) + u[0] * s) + v1[2]*(c + u[2] * u[2] * (1-c))); 
 	
 		if (Vfunc(8,rot,v1,NULL,0) < Vfunc(8,v1,v2,NULL,0) && Vfunc(8,rot,v2,NULL,0) < Vfunc(8,v1,v2,NULL,0)) {	
 			c = cosf(-1*ang);
 			s = sinf(-1*ang);
-			rot[0] = (v1[0](c + u[0] * u[0] * (1-c)) + v1[1](u[0] * u[1] * (1-c) - u[2] * s) + v1[2](u[0] * u[2] * (1-c) + u[1] * s));
-			rot[1] = (v1[0](u[0] * u[1] * (1-c) + u[2] * s) + v1[1](c + u[1] * u[1] * (1-c)) + v1[2](u[1] * u[2] * (1-c) - u[0] * s));
-			rot[2] = (v1[0](u[0] * u[2] * (1-c) - u[1] * s) + v1[1](u[1] * u[2] * (1-c) + u[0] * s) + v1[2](c + u[2] * u[2] * (1-c)));
+			rot[0] = (v1[0]*(c + u[0] * u[0] * (1-c)) + v1[1]*(u[0] * u[1] * (1-c) - u[2] * s) + v1[2]*(u[0] * u[2] * (1-c) + u[1] * s));
+			rot[1] = (v1[0]*(u[0] * u[1] * (1-c) + u[2] * s) + v1[1]*(c + u[1] * u[1] * (1-c)) + v1[2]*(u[1] * u[2] * (1-c) - u[0] * s));
+			rot[2] = (v1[0]*(u[0] * u[2] * (1-c) - u[1] * s) + v1[1]*(u[1] * u[2] * (1-c) + u[0] * s) + v1[2]*(c + u[2] * u[2] * (1-c)));
 		}
 	
 		memcpy(vresult,rot,sizeof(float)*3);
