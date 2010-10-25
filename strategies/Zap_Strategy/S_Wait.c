@@ -4,10 +4,17 @@
 
 VPoint(myState,otherState,to_opponent);
 
-ZRSetAttitudeTarget(to_opponent);
 
-if(fabs(otherState[0] - otherTargetX) < tolerance){
-	state = STATE_ZAP;
+
+if(fabs(otherState[0] - otherTargetX > .10)){
+	state = STATE_SEARCHING;
 	break;
+}
+else {
+	ZRSetAttitudeTarget(to_opponent);	
+	if(fabs(otherState[0] - otherTargetX) < .005){
+		state = STATE_ZAP;
+		break;
+	}
 }
 	
