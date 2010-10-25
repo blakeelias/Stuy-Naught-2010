@@ -8,7 +8,7 @@
 
 #include "S_Target.c"
 
-if(fabs(otherState[0] - otherTargetX < .05)){
+if(fabs(otherState[0] - otherTargetX < .05 && getPercentChargeRemaining() > 0)){
 	state = STATE_WAIT;
 	break;
 }

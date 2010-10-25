@@ -3,6 +3,7 @@
 
 void ZRUser(float* myState, float* otherState, float time)
 {
+ float target[3];
  float station[4];
 
  float baseAngle;
@@ -15,6 +16,7 @@ void ZRUser(float* myState, float* otherState, float time)
  float tolerance=.02;
 
  float a1, a2;
+ float s1, s2; //s1 = score 1 second ago. s2 = current score
 
  DEBUG(("time: %4.0f, state: %d\n", time, state));
  switch (state)
@@ -42,6 +44,9 @@ void ZRUser(float* myState, float* otherState, float time)
    break;
   case STATE_TOSTATION:
 #include "S_Station.c"
+   break;
+  case STATE_CAMP:
+#include "S_Camp.c"
    break;
  }
 }
