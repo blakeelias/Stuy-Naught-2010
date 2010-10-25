@@ -13,13 +13,6 @@
  *      float a1[3], a2[3], a3[3], s;
  *
  *  Functions:
- *    Length of vector: 
- *       which == 0: returns |v1| (= length of v1)
- *       s = Vfunc(0,a1,NULL,NULL,0); // returns length(a1)
- *
- *    Adding vectors:
- *       which == 1: vresult = v1 + v2
- *       Vfunc(1,a1,a2,a3,0);  // a3 = a1 + a2
  *
  *    Subtracting vectors:
  *       which == 2: vresult = v1 - v2
@@ -42,12 +35,6 @@
  *    Distance between two vectors (as positions):
  *       which == 6: returns |v1-v2|
  *       s = Vfunc(6,a1,a2,NULL,0);  // s = length(a1-a2)
- *
- *    Copy a vector:
- *       which == 7: copies v1 to vresult:
- *       Vfunc(7,a1,NULL,a3,0);  // copies vector a1 to a3
- *       Note: for instance, this can copy the velocities in myState (starting at myState[3]) to
- *       vresult using Vfunc(7,myState+3,NULL,vresult,0);
  *
  *    Angle between 2 vectors (in degrees, not radians):
  *       which == 8: returns angle between v1 and v2
@@ -75,14 +62,6 @@ float Vfunc(int which, float *v1, float *v2, float *vresult, float scalar)
 #define prvect(msg,p)    printf("%s (%f,%f,%f)\n",msg,p[0],p[1],p[2])
 
 	int i;
-	
-	if (which == 0) // returns |v1|
-		return mathVecMagnitude(v1, 3);
-
-	if (which == 1) { // vresult = V1 + v2
-		mathVecAdd(vresult,v1,v2,3);
-		return 0;
-	}
 
 	if (which == 2) { // vresult = v1 - v2
         float vtemp[3];
@@ -110,16 +89,11 @@ float Vfunc(int which, float *v1, float *v2, float *vresult, float scalar)
 	if (which == 6) { // returns distance between v1 and v2
 		float v3[3];
 		Vfunc(2,v1,v2,v3,0);  // v3 = v1 - v2
-		return Vfunc(0,v3,NULL,NULL,0);
-	}
-
-	if (which == 7) { // copies v1 to vresult
-		memcpy(vresult, v1, sizeof(float)*3);
-		return 0;
+		return mathVecMagnitude(v3,3);
 	}
 
 	if (which == 8) { // angle between two vectors
-	    float dot = Vfunc(5,v1,v2,NULL,0)/(Vfunc(0,v1,NULL,NULL,0)*Vfunc(0,v2,NULL,NULL,0));
+	    float dot = Vfunc(5,v1,v2,NULL,0)/(mathVecMagnitude(v1,3)*mathVecMagnitude(v2,3));
 	    return acos(dot)*180.0/3.14159265;
 	}
 
@@ -132,9 +106,10 @@ float Vfunc(int which, float *v1, float *v2, float *vresult, float scalar)
 	if (which == 10) { // rotated vector v1 towards v2 at scalar degrees
 		float ang = scalar*3.14159265/180;
 		float u[3];
-		float c = cosf(ang);
-		float s = sinf(ang);
+		float c;
+		float s;
 		float rot[3];
+		int k;
 		mathVecNormalize(v1,3);
 		mathVecNormalize(v2,3);
 		
@@ -142,20 +117,21 @@ float Vfunc(int which, float *v1, float *v2, float *vresult, float scalar)
 			return 1;
 		}
 		
+		c = cosf(ang);
+		s = sinf(ang);
 		mathVecCross(u,v1,v2);
 		mathVecNormalize(u,3);
-		rot[0] = (v1[0]*(c + u[0] * u[0] * (1-c)) + v1[1]*(u[0] * u[1] * (1-c) - u[2] * s) + v1[2]*(u[0] * u[2] * (1-c) + u[1] * s));
-		rot[1] = (v1[0]*(u[0] * u[1] * (1-c) + u[2] * s) + v1[1]*(c + u[1] * u[1] * (1-c)) + v1[2]*(u[1] * u[2] * (1-c) - u[0] * s));
-		rot[2] = (v1[0]*(u[0] * u[2] * (1-c) - u[1] * s) + v1[1]*(u[1] * u[2] * (1-c) + u[0] * s) + v1[2]*(c + u[2] * u[2] * (1-c))); 
-	
-		if (fabs(Vfunc(8,rot,v1,NULL,0)) > fabs(Vfunc(8,v1,v2,NULL,0)) || fabs(Vfunc(8,rot,v2,NULL,0)) > fabs(Vfunc(8,v1,v2,NULL,0))) {	
-			c = cosf(-1*ang);
-			s = sinf(-1*ang);
+		
+		for(k=0;k<2;k++) {
+			if ((k == 1) && (fabs(Vfunc(8,rot,v1,NULL,0)) > fabs(Vfunc(8,v1,v2,NULL,0)) || fabs(Vfunc(8,rot,v2,NULL,0)) > fabs(Vfunc(8,v1,v2,NULL,0)))) {	
+				c = cosf(-1*ang);
+				s = sinf(-1*ang);
+			}
 			rot[0] = (v1[0]*(c + u[0] * u[0] * (1-c)) + v1[1]*(u[0] * u[1] * (1-c) - u[2] * s) + v1[2]*(u[0] * u[2] * (1-c) + u[1] * s));
 			rot[1] = (v1[0]*(u[0] * u[1] * (1-c) + u[2] * s) + v1[1]*(c + u[1] * u[1] * (1-c)) + v1[2]*(u[1] * u[2] * (1-c) - u[0] * s));
-			rot[2] = (v1[0]*(u[0] * u[2] * (1-c) - u[1] * s) + v1[1]*(u[1] * u[2] * (1-c) + u[0] * s) + v1[2]*(c + u[2] * u[2] * (1-c)));
+			rot[2] = (v1[0]*(u[0] * u[2] * (1-c) - u[1] * s) + v1[1]*(u[1] * u[2] * (1-c) + u[0] * s) + v1[2]*(c + u[2] * u[2] * (1-c))); 
 		}
-	
+
 		memcpy(vresult,rot,sizeof(float)*3);
 		return 0;
 	}
