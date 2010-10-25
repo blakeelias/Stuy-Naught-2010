@@ -5,6 +5,7 @@ target[1] = target[2] = 0;
 
 CoastToTarget(myState, target);
 
+DEBUG(("currently camping\n"));
 if (VAngle(myState+6, otherState) < 40) {
     VPoint(myState, otherState, target);
     SET_ATTITUDE_TARGET(target);
