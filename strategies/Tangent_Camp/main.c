@@ -33,5 +33,8 @@ void ZRUser(float* myState, float* otherState, float time)
   case STATE_CAMP:
 #include "S_Camp.c"
    break;
+  case STATE_POSTCAMP:
+#include "S_PostCamp.c"
+   break;
  }
 }

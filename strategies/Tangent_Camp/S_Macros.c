@@ -36,7 +36,8 @@
 #define STATE_PREP        1
 #define STATE_SEARCHING   2
 #define STATE_TOPANEL     3
-#define STATE_CAMP   4
+#define STATE_CAMP        4
+#define STATE_POSTCAMP    5
 
 
 
