@@ -4,49 +4,35 @@ and paste the functions in the resulting files "out.c" and
 entire directory to "make" "out.c" and "out2.c" successfully.
 You will also need Brooks' Vfunc.
 
-RUNS OUT OF FUEL -- NOT FULLY DEBUGGED
+
 
 This is a simple satellite that attempts to dock with the panel
-and then with the station, which zaps the opponent once (for 10
-seconds) as the only offensive strategy.
+and then with the station, without using any defensive or
+offensive strategies:
 
 1) The satellite moves to the same plane as the panel init
 circle, but outside it, so that it doesn't need to rotate as
 much to find the panel. How far away from the center of the
 panel init circle it goes is controlled by a macro in
-S_Macros.c (SEARCH_DISTANCE).  While moving, it points its back
-towards the sun to charge.
+S_Macros.c (SEARCH_DISTANCE).
 
 2) The satellite finds the two tangent lines to the panel init
 circle that goes through its location, and searches inside this
 angle. These two tangent lines are constantly refreshed to
-accomodate drift.
-
-3) The SPHERE turns towards the opponent and zaps with all its charge.
-
-4) To control its rate of search, the satellite
+accomodate drift. To control its rate of search, the satellite
 sets its attitude target to a point some angle away from its
 current attitude target. This angle is also controlled by a
 macro in S_Macros.c (SEARCH_ANGULAR_VELOCITY).
 
-5) The satellite moves in front of the panel to dock with it,
+3) The satellite moves in front of the panel to dock with it,
 then in front of the station to dock with that. The target
 distance from the panel/station is controlled by a macro in
 S_Macros.c (DOCK_DISTANCE).
 
-6) Since it's impossible for the satellite to be exactly at a
+4) Since it's impossible for the satellite to be exactly at a
 position, it must be willing to tolerate some degree of error.
 This tolerance is controlled by... Ah, you get the point
 (ERROR_TOLERANCE).
-
-7) After docking with the panel, the satellite slowly coasts to
-its station by controlling its velocity (with error checking).
-Once it gets close enough, it halts by setting its position
-target. How close is close? You guessed it - Controlled by a
-macro (CLOSE).
-
-8) The magnitude of the satellite's target velocity is set with
-MAGNITUDE.
 
 
 
@@ -56,5 +42,4 @@ be used in S_Macros.c to get the best results.
 Also, if better movement and/or attitude target functions are
 ever made, change the defines in "S_Macros.c" to the names of
 those functions.
-
 
