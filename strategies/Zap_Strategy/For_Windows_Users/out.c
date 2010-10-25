@@ -46,6 +46,7 @@ int scanTarget = 1;
 
 void ZRUser(float* myState, float* otherState, float time)
 {
+ float target[3];
  float station[4];
 
  float baseAngle;
@@ -58,6 +59,7 @@ void ZRUser(float* myState, float* otherState, float time)
  float tolerance=.02;
 
  float a1, a2;
+ float s1, s2; //s1 = score 1 second ago. s2 = current score
 
  DEBUG(("time: %4.0f, state: %d\n", time, state));
  switch (state)
@@ -118,17 +120,24 @@ if (getPercentChargeRemaining() >= 95) {
 
 Vfunc(9, (myState), (otherState), (to_opponent), 0);
 
-ZRSetAttitudeTarget(to_opponent);
 
-if(fabs(otherState[0] - (getPanelSide() * -0.7)) < tolerance){
- state = 4;
+
+if(fabs(otherState[0] - (getPanelSide() * -0.7) > .10)){
+ state = 5;
  break;
+}
+else {
+ ZRSetAttitudeTarget(to_opponent);
+ if(fabs(otherState[0] - (getPanelSide() * -0.7)) < .005){
+  state = 4;
+  break;
+ }
 }
    break;
  case 4:
 ZRSetPositionTarget(target_pos);
 Vfunc(9, (myState), (otherState), (to_opponent), 0);
-if (Vfunc(8, (to_opponent), (myState+6), NULL, 0) < 5 && getPercentChargeRemaining() > 0) {
+if (Vfunc(8, (to_opponent), (myState+6), NULL, 0) < 5 && getPercentChargeRemaining() > 0 && abs(otherState[0]) > .68 && abs(otherState[0] < .81)) {
     DEBUG(("time: %4.0f, (BLUE): ZAPPING ++++++++++++++++++++\n",time));
     ZRRepel();
 }
@@ -182,6 +191,11 @@ target_att[2] = sinf(tangentPoints[2]);
 
 ZRSetAttitudeTarget(target_att);
 
+if(fabs(otherState[0] - (getPanelSide() * -0.7) < .05 && getPercentChargeRemaining() > 0)){
+ state = 3;
+ break;
+}
+
 tangentPoints[2] += scanTarget * 0.1;
 
 if ((scanTarget == 1) && (tangentPoints[2] >= tangentPoints[1]))
@@ -216,6 +230,13 @@ ZRSetAttitudeTarget(target_pos);
   case 7:
 //Code to beeline towards the station...
 
+if (s2 - s1 == 0 && s2 > 0){
+state = 8;
+break;
+}
+else {
+s1 = s2;
+s2 = getOtherCurrentScore();
 getStationState(station);
 
 Vfunc(7, (station), NULL, (target_att), 0);
@@ -230,6 +251,17 @@ target_att[1] = cosf(station[3]);
 target_att[2] = sinf(station[3]);
 
 ZRSetAttitudeTarget(target_att);
+}
+   break;
+  case 8:
+//Code to beeline towards the station...
+
+target[0] = myState[0];
+target[1] = myState[1];
+target[2] = myState[2];
+
+CoastToTarget(myState, target);
+ZRSetAttitudeTarget(target);
    break;
  }
 }
