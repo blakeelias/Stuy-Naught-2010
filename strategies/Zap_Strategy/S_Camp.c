@@ -1,10 +1,11 @@
 //Code to beeline towards the station...
 
-target[0] = myState[0];
-target[1] = myState[1];
-target[2] = myState[2];
+#define targetX (getPanelSide() * 0.7)
+
+target[0] = targetX;
+target[1] = 0;
+target[2] = 0;
 
 CoastToTarget(myState, target);
-SET_ATTITUDE_TARGET(target);
 
 

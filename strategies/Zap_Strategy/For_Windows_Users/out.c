@@ -59,7 +59,8 @@ void ZRUser(float* myState, float* otherState, float time)
  float tolerance=.02;
 
  float a1, a2;
- float s1, s2; //s1 = score 1 second ago. s2 = current score
+ float s1 = 0;
+ float s2 = 0; //s1 = score 1 second ago. s2 = current score
 
  DEBUG(("time: %4.0f, state: %d\n", time, state));
  switch (state)
@@ -137,7 +138,7 @@ else {
  case 4:
 ZRSetPositionTarget(target_pos);
 Vfunc(9, (myState), (otherState), (to_opponent), 0);
-if (Vfunc(8, (to_opponent), (myState+6), NULL, 0) < 5 && getPercentChargeRemaining() > 0 && abs(otherState[0]) > .68 && abs(otherState[0] < .81)) {
+if (Vfunc(8, (to_opponent), (myState+6), NULL, 0) < 5 && getPercentChargeRemaining() > 0 && fabs(otherState[0]) > .68 && fabs(otherState[0]) < .81) {
     DEBUG(("time: %4.0f, (BLUE): ZAPPING ++++++++++++++++++++\n",time));
     ZRRepel();
 }
@@ -256,12 +257,13 @@ ZRSetAttitudeTarget(target_att);
   case 8:
 //Code to beeline towards the station...
 
-target[0] = myState[0];
-target[1] = myState[1];
-target[2] = myState[2];
+
+
+target[0] = (getPanelSide() * 0.7);
+target[1] = 0;
+target[2] = 0;
 
 CoastToTarget(myState, target);
-ZRSetAttitudeTarget(target);
    break;
  }
 }

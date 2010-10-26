@@ -16,7 +16,8 @@ void ZRUser(float* myState, float* otherState, float time)
  float tolerance=.02;
 
  float a1, a2;
- float s1, s2; //s1 = score 1 second ago. s2 = current score
+ float s1 = 0;
+ float s2 = 0; //s1 = score 1 second ago. s2 = current score
 
  DEBUG(("time: %4.0f, state: %d\n", time, state));
  switch (state)

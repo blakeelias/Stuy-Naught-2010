@@ -6,7 +6,7 @@ VPoint(myState,otherState,to_opponent);
 
 
 
-if(fabs(otherState[0] - otherTargetX > .13)){
+if(fabs(otherState[0] - otherTargetX > .10)){
 	state = STATE_SEARCHING;
 	break;
 }
