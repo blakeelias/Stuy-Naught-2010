@@ -63,7 +63,7 @@ void RotateTarget(float * myState, float * pos) {
 
 void ZRUser(float * myState, float * otherState, float time) {
  */   
-    #define VLen(a)              Vfunc(0, (a), NULL, NULL, 0)
+   #define VLen(a)              Vfunc(0, (a), NULL, NULL, 0)
     #define VAdd(a, b, result)   Vfunc(1, (a), (b), (result), 0)
     #define VSub(a, b, result)   Vfunc(2, (a), (b), (result), 0)
     #define VUnit(a, result)     Vfunc(3, (a), NULL, (result), 0)
@@ -74,10 +74,20 @@ void ZRUser(float * myState, float * otherState, float time) {
     #define VAngle(a, b)         Vfunc(8, (a), (b), NULL, 0)
     #define VPoint(a, b, result) Vfunc(9, (a), (b), (result), 0)
 
-    #define PI 3.14159265
     #define Deg2Rad(Deg)    (Deg*PI/180.0)
     #define Rad2Deg(Rad)    (Rad*180.0/PI)
+    
 
+    
+        float panel_center[3];
+    	float panel_center_distance;
+        float panel_location[4];
+    	float attitude[3];
+        float attitude_rate;
+        float station[3];
+        float station_attitude[3];
+        float station_position[3];
+        float station_distance;
     procvar[0] = time;
  	
    // printf("time: %3.0f, state: %d, pos: (%5.2f, %5.2f, %5.2f), ",
@@ -88,14 +98,11 @@ void ZRUser(float * myState, float * otherState, float time) {
     
     if (state == 0) {
         /*float attitude[3] = {0, 1, 0};*/
-    	float attitude[3];
         attitude[0] = 0;
-        attitude[1] = 1;
+        attitude[1] = 1*getPanelState();
         attitude[2] = 0;
 
-    	float panel_center_distance;
         /*float panel_center[3] = {.7*getPanelSide(), 0, 0};*/
-        float panel_center[3];
         panel_center[0] = .7*getPanelSide();
         panel_center[1] = 0;
         panel_center[2] = 0;
@@ -119,7 +126,6 @@ void ZRUser(float * myState, float * otherState, float time) {
     }
     if (state == 1) {
         /*float panel_center[3] = {.7*getPanelSide(), 0, 0};*/
-        float panel_center[3];
         panel_center[0] = .7*getPanelSide();
         panel_center[1] = 0;
         panel_center[2] = 0;
@@ -130,12 +136,10 @@ void ZRUser(float * myState, float * otherState, float time) {
     }
     if (state == 2) {
         /*float panel_center[3] = {.7*getPanelSide(), 0, 0};*/
-        float panel_center[3];
         panel_center[0] = .7*getPanelSide();
         panel_center[1] = 0;
         panel_center[2] = 0;
 
-        float panel_location[4];
         ZRSetPositionTarget(panel_center);
         if (isPanelFound()) {
             getPanelState(panel_location);
@@ -149,7 +153,6 @@ void ZRUser(float * myState, float * otherState, float time) {
         }
     }
     if (state == 3) {
-        float attitude_rate;
         ZRSetAttitudeTarget(procvar+20);
         attitude_rate = Vfunc(0, myState+9, NULL, NULL, 0);
         //printf("att_rate: %3.5f\n", attitude_rate);
@@ -173,18 +176,15 @@ void ZRUser(float * myState, float * otherState, float time) {
     if (state == 5) {
         if (iHavePanel()) {
             /*float station[3] = {-.7*getPanelSide(), 0, 0};*/
-            float station[3];
             station[0] = -.7*getPanelSide();
             station[1] = 0;
             station[2] = 0;
 
             /*float station_attitude[3] = {0, 0, 1*getPanelSide()};*/
-            float station_attitude[3];
             station_attitude[0] = 0;
             station_attitude[1] = 0;
             station_attitude[2] = 1*getPanelSide();
 
-            float station_distance;
             ZRSetPositionTarget(station);
             ZRSetAttitudeTarget(station_attitude);
             station_distance = Vfunc(6, myState, station, NULL, 0);
@@ -195,13 +195,11 @@ void ZRUser(float * myState, float * otherState, float time) {
     if (state == 6) {
         if (iHavePanel()) {
             /*float station_attitude[3] = {0, 0, 1*getPanelSide()};*/
-            float station_attitude[3];
             station_attitude[0] = 0;
             station_attitude[1] = 0;
             station_attitude[2] = 1*getPanelSide();
 
             /*float station_position[3] = {-.7*getPanelSide(), 0, 0};*/
-            float station_position[3];
             station_position[0] = -.7*getPanelSide();
             station_position[1] = 0;
             station_position[2] = 0;
@@ -211,6 +209,6 @@ void ZRUser(float * myState, float * otherState, float time) {
         }
     }
     
-    if (time == 0) printf("time,state,X position, panel found, in sync ,docked, fuel\n");
-    printf("%3.0f, %d, %5.3f, %d, %d, %d, %5.3f\n",  time, state, myState[0],isPanelFound(),isPanelInSync(),iHavePanel(),getPercentFuelRemaining());
+   // if (time == 0) printf("time,state,X position, panel found, in sync ,docked, fuel\n");
+   // printf("%3.0f, %d, %5.3f, %d, %d, %d, %5.3f\n",  time, state, myState[0],isPanelFound(),isPanelInSync(),iHavePanel(),getPercentFuelRemaining());
 	
