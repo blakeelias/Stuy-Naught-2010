@@ -15,7 +15,7 @@
  */
 /*
 int state = 0;
-float [100];
+float procvar[100];
 
 void RotateTarget(float * myState, float * pos) {
     #define VLen(a)              Vfunc(0, (a), NULL, NULL, 0)
