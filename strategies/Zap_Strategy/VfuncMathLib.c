@@ -59,82 +59,73 @@ float Vfunc(int which, float *v1, float *v2, float *vresult, float scalar)
 
 */
 
-#define prvect(msg,p)    printf("%s (%f,%f,%f)\n",msg,p[0],p[1],p[2])
 
-	int i;
+#define prvect(msg,p) printf("%s (%f,%f,%f)\n",msg,p[0],p[1],p[2])
 
-	if (which == 2) { // vresult = v1 - v2
-        float vtemp[3];
-		Vfunc(4,v2,NULL,vtemp,-1);
-		mathVecAdd(vresult,v1,vtemp,3);
-		return 0;
-	}
+int i = 0;
+float v3[3];
 
-	if (which == 3) { // vresult = v1 / |v1|; if |v1| == 0, returns 0, else 1
-		memcpy(vresult, v1, sizeof(float)*3);
-		mathVecNormalize(vresult,3);
-		return 0;
-	}
+//1 and 2 are no longer needed
 
-	if (which == 4) { // vresult = scalar * v1
-		for (i = 0; i < 3; ++i)
-			vresult[i] = scalar * v1[i];
-		return 0;
-	}
+if (which == 2) { // vresult = v1 - v2
+for (; i < 3; ++i)
+ vresult[i] = v1[i] - v2[i];
+}
 
-	if (which == 5) { // returns dot product: v1 * v2
-		return mathVecInner(v1,v2,3);
-	}
+if (which == 3) { // vresult = v1 / |v1|
+memcpy(vresult, v1, sizeof(float)*3);
+mathVecNormalize(vresult,3);
+}
 
-	if (which == 6) { // returns distance between v1 and v2
-		float v3[3];
-		Vfunc(2,v1,v2,v3,0);  // v3 = v1 - v2
-		return mathVecMagnitude(v3,3);
-	}
+if (which == 4) { // vresult = scalar * v1
+for (; i < 3; ++i)
+ vresult[i] = scalar * v1[i];
+}
 
-	if (which == 8) { // angle between two vectors
-	    float dot = Vfunc(5,v1,v2,NULL,0)/(mathVecMagnitude(v1,3)*mathVecMagnitude(v2,3));
-	    return acos(dot)*180.0/3.14159265;
-	}
+if (which == 6) { // returns distance between v1 and v2
+Vfunc(2,v1,v2,v3,0); // v3 = v1 - v2
+return mathVecMagnitude(v3,3);
+}
 
-	if (which == 9) { // unit vector pointing from v1 toward v2
-	    float v9[3];
-	    Vfunc(2,v2,v1,v9,0);
-	    return Vfunc(3,v9,NULL,vresult,0);
-	}
-	
-	if (which == 10) { // rotated vector v1 towards v2 at scalar degrees
-		float ang = scalar*3.14159265/180;
-		float u[3];
-		float c;
-		float s;
-		float rot[3];
-		int k;
-		mathVecNormalize(v1,3);
-		mathVecNormalize(v2,3);
-		
-		if (scalar > Vfunc(8,v1,v2,NULL,0)) {
-			return 1;
-		}
-		
-		c = cosf(ang);
-		s = sinf(ang);
-		mathVecCross(u,v1,v2);
-		mathVecNormalize(u,3);
-		
-		for(k=0;k<2;k++) {
-			if ((k == 1) && (fabs(Vfunc(8,rot,v1,NULL,0)) > fabs(Vfunc(8,v1,v2,NULL,0)) || fabs(Vfunc(8,rot,v2,NULL,0)) > fabs(Vfunc(8,v1,v2,NULL,0)))) {	
-				c = cosf(-1*ang);
-				s = sinf(-1*ang);
-			}
-			rot[0] = (v1[0]*(c + u[0] * u[0] * (1-c)) + v1[1]*(u[0] * u[1] * (1-c) - u[2] * s) + v1[2]*(u[0] * u[2] * (1-c) + u[1] * s));
-			rot[1] = (v1[0]*(u[0] * u[1] * (1-c) + u[2] * s) + v1[1]*(c + u[1] * u[1] * (1-c)) + v1[2]*(u[1] * u[2] * (1-c) - u[0] * s));
-			rot[2] = (v1[0]*(u[0] * u[2] * (1-c) - u[1] * s) + v1[1]*(u[1] * u[2] * (1-c) + u[0] * s) + v1[2]*(c + u[2] * u[2] * (1-c))); 
-		}
+if (which == 8) { // angle between two vectors
+return acosf(Vfunc(5,v1,v2,NULL,0)/(mathVecMagnitude(v1,3)*mathVecMagnitude(v2,3))) * 180.0 / PI;
+}
 
-		memcpy(vresult,rot,sizeof(float)*3);
-		return 0;
-	}
-	
+if (which == 9) { // unit vector pointing from v1 toward v2
+Vfunc(2,v2,v1,v3,0);
+Vfunc(3,v3,NULL,vresult,0);
+}
+
+if (which == 10) { // rotated vector v1 towards v2 at scalar degrees
+float ang = scalar*PI/180.0;
+float u[3];
+float c = cosf(ang);
+float s = sinf(ang);
+float rot[3];
+mathVecNormalize(v1,3);
+mathVecNormalize(v2,3);
+
+if (scalar > Vfunc(8,v1,v2,NULL,0)) {
+return 1;
+}
+
+mathVecCross(u,v1,v2);
+mathVecNormalize(u,3);
+rot[0] = (v1[0]*(c + u[0] * u[0] * (1-c)) + v1[1]*(u[0] * u[1] * (1-c) - u[2] * s) + v1[2]*(u[0] * u[2] * (1-c) + u[1] * s));
+rot[1] = (v1[0]*(u[0] * u[1] * (1-c) + u[2] * s) + v1[1]*(c + u[1] * u[1] * (1-c)) + v1[2]*(u[1] * u[2] * (1-c) - u[0] * s));
+rot[2] = (v1[0]*(u[0] * u[2] * (1-c) - u[1] * s) + v1[1]*(u[1] * u[2] * (1-c) + u[0] * s) + v1[2]*(c + u[2] * u[2] * (1-c)));
+
+if (Vfunc(8,rot,v1,NULL,0) < Vfunc(8,v1,v2,NULL,0) && Vfunc(8,rot,v2,NULL,0) < Vfunc(8,v1,v2,NULL,0)) {
+c = cosf(-1*ang);
+s = sinf(-1*ang);
+rot[0] = (v1[0]*(c + u[0] * u[0] * (1-c)) + v1[1]*(u[0] * u[1] * (1-c) - u[2] * s) + v1[2]*(u[0] * u[2] * (1-c) + u[1] * s));
+rot[1] = (v1[0]*(u[0] * u[1] * (1-c) + u[2] * s) + v1[1]*(c + u[1] * u[1] * (1-c)) + v1[2]*(u[1] * u[2] * (1-c) - u[0] * s));
+rot[2] = (v1[0]*(u[0] * u[2] * (1-c) - u[1] * s) + v1[1]*(u[1] * u[2] * (1-c) + u[0] * s) + v1[2]*(c + u[2] * u[2] * (1-c)));
+}
+
+memcpy(vresult,rot,sizeof(float)*3);
+}
+
+return 0;
 //}
 
