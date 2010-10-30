@@ -101,6 +101,10 @@ float ang = scalar*PI/180.0;
 float u[3];
 float c = cosf(ang);
 float s = sinf(ang);
+if (Vfunc(8,v3,v1,NULL,0) < Vfunc(8,v1,v2,NULL,0) && Vfunc(8,v3,v2,NULL,0) < Vfunc(8,v1,v2,NULL,0)) {
+ c = cosf(-1*ang);
+ s = sinf(-1*ang);
+}
 mathVecNormalize(v1,3);
 mathVecNormalize(v2,3);
 
@@ -110,17 +114,10 @@ return 1;
 
 mathVecCross(u,v1,v2);
 mathVecNormalize(u,3);
-v3[0] = (v1[0]*(c + u[0] * u[0] * (1-c)) + v1[1]*(u[0] * u[1] * (1-c) - u[2] * s) + v1[2]*(u[0] * u[2] * (1-c) + u[1] * s));
-v3[1] = (v1[0]*(u[0] * u[1] * (1-c) + u[2] * s) + v1[1]*(c + u[1] * u[1] * (1-c)) + v1[2]*(u[1] * u[2] * (1-c) - u[0] * s));
-v3[2] = (v1[0]*(u[0] * u[2] * (1-c) - u[1] * s) + v1[1]*(u[1] * u[2] * (1-c) + u[0] * s) + v1[2]*(c + u[2] * u[2] * (1-c)));
 
-if (Vfunc(8,v3,v1,NULL,0) < Vfunc(8,v1,v2,NULL,0) && Vfunc(8,v3,v2,NULL,0) < Vfunc(8,v1,v2,NULL,0)) {
-c = cosf(-1*ang);
-s = sinf(-1*ang);
 v3[0] = (v1[0]*(c + u[0] * u[0] * (1-c)) + v1[1]*(u[0] * u[1] * (1-c) - u[2] * s) + v1[2]*(u[0] * u[2] * (1-c) + u[1] * s));
 v3[1] = (v1[0]*(u[0] * u[1] * (1-c) + u[2] * s) + v1[1]*(c + u[1] * u[1] * (1-c)) + v1[2]*(u[1] * u[2] * (1-c) - u[0] * s));
 v3[2] = (v1[0]*(u[0] * u[2] * (1-c) - u[1] * s) + v1[1]*(u[1] * u[2] * (1-c) + u[0] * s) + v1[2]*(c + u[2] * u[2] * (1-c)));
-}
 
 memcpy(vresult,v3,sizeof(float)*3);
 }
