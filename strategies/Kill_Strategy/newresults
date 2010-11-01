@@ -1,0 +1,497 @@
+Overall Stats:
+W - L - D
+
+Vs. Default Opponent 1
+SPH1: 1 - 0 - 0
+SPH2: 1 - 0 - 0
+
+===================================================================================================
+Simulated as SPH1
+Opponent: Default Opponent 1
+
+http://zerorobotics.mit.edu/ide/vis/22956
+
+INITANGLE  / PANELANGLE/ PANELRADIUS 
+0.48855677 / 2.1342483 / 0.28446397
+
+      X		Y	  Z
+SPH1: 0 , 0.3076411, 0.16352223
+SPH2: 0 , -0.3076411, -0.16352223
+
+Results: 
+SPH1: 100 (Out of fuel, won.)
+SPH2: 120 (Out of fuel, lost.)
+
+time:    0, state: 0
+time:    1, state: 1
+time:    2, state: 1
+time:    3, state: 1
+time:    4, state: 1
+time:    5, state: 1
+time:    6, state: 1
+time:    7, state: 1
+time:    8, state: 1
+time:    9, state: 1
+time:   10, state: 1
+time:   11, state: 1
+time:   12, state: 1
+time:   13, state: 1
+time:   14, state: 1
+time:   15, state: 1
+time:   16, state: 1
+time:   17, state: 1
+time:   18, state: 1
+time:   19, state: 1
+time:   20, state: 1
+time:   21, state: 2
+time:   22, state: 2
+time:   23, state: 2
+time:   24, state: 2
+time:   25, state: 3
+time:   26, state: 3
+time:   27, state: 3
+time:   28, state: 3
+time:   29, state: 3
+time:   30, state: 3
+time:   31, state: 3
+time:   32, state: 4
+time:   32, (BLUE): angle to opponent: 174.415039
+time:   33, state: 4
+time:   33, (BLUE): ZAPPING ++++++++++++++++++++
+time:   34, state: 4
+time:   34, (BLUE): angle to opponent: 158.163757
+time:   35, state: 4
+time:   35, (BLUE): angle to opponent: 145.456512
+time:   36, state: 4
+time:   36, (BLUE): angle to opponent: 51.812546
+time:   37, state: 4
+time:   37, (BLUE): angle to opponent: 32.055672
+time:   38, state: 4
+time:   38, (BLUE): angle to opponent: 27.441280
+time:   39, state: 4
+time:   39, (BLUE): angle to opponent: 23.325830
+time:   40, state: 4
+time:   40, (BLUE): angle to opponent: 23.355852
+time:   41, state: 4
+time:   41, (BLUE): angle to opponent: 21.393003
+time:   42, state: 4
+time:   42, (BLUE): ZAPPING ++++++++++++++++++++
+time:   43, state: 4
+time:   43, (BLUE): ZAPPING ++++++++++++++++++++
+time:   44, state: 4
+time:   44, (BLUE): ZAPPING ++++++++++++++++++++
+time:   45, state: 4
+time:   45, (BLUE): angle to opponent: 22.283014
+time:   46, state: 4
+time:   46, (BLUE): angle to opponent: 20.288424
+time:   47, state: 4
+time:   47, (BLUE): angle to opponent: 20.484924
+time:   48, state: 4
+time:   48, (BLUE): ZAPPING ++++++++++++++++++++
+time:   49, state: 4
+time:   49, (BLUE): angle to opponent: 22.262623
+time:   50, state: 4
+time:   50, (BLUE): angle to opponent: 18.062157
+time:   51, state: 4
+time:   51, (BLUE): angle to opponent: 18.111042
+time:   52, state: 4
+time:   52, (BLUE): angle to opponent: 20.189495
+time:   53, state: 4
+time:   53, (BLUE): angle to opponent: 21.410486
+time:   54, state: 4
+time:   54, (BLUE): ZAPPING ++++++++++++++++++++
+time:   55, state: 4
+time:   55, (BLUE): ZAPPING ++++++++++++++++++++
+time:   56, state: 4
+time:   56, (BLUE): ZAPPING ++++++++++++++++++++
+time:   57, state: 4
+time:   57, (BLUE): ZAPPING ++++++++++++++++++++
+time:   58, state: 4
+time:   58, (BLUE): angle to opponent: 23.943434
+time:   59, state: 4
+time:   59, (BLUE): angle to opponent: 31.669960
+time:   60, state: 4
+time:   60, (BLUE): angle to opponent: 95.255577
+time:   61, state: 4
+time:   61, (BLUE): angle to opponent: 144.936829
+time:   62, state: 4
+time:   62, (BLUE): angle to opponent: 144.900940
+time:   63, state: 4
+time:   63, (BLUE): angle to opponent: 144.877686
+time:   64, state: 4
+time:   64, (BLUE): angle to opponent: 144.869598
+time:   65, state: 4
+time:   65, (BLUE): ZAPPING ++++++++++++++++++++
+time:   66, state: 4
+time:   67, state: 5
+time:   68, state: 5
+time:   69, state: 5
+time:   70, state: 5
+time:   71, state: 5
+time:   72, state: 5
+time:   73, state: 5
+time:   74, state: 5
+time:   75, state: 5
+time:   76, state: 5
+time:   77, state: 5
+time:   78, state: 5
+time:   79, state: 5
+time:   80, state: 5
+time:   81, state: 5
+time:   82, state: 5
+time:   83, state: 5
+time:   84, state: 5
+time:   85, state: 5
+time:   86, state: 5
+time:   87, state: 5
+time:   88, state: 5
+time:   89, state: 5
+time:   90, state: 5
+time:   91, state: 5
+time:   92, state: 5
+time:   93, state: 5
+time:   94, state: 5
+time:   95, state: 5
+time:   96, state: 5
+time:   97, state: 5
+time:   98, state: 5
+time:   99, state: 5
+time:  100, state: 6
+time:  101, state: 6
+time:  102, state: 6
+time:  103, state: 6
+time:  104, state: 6
+time:  105, state: 6
+time:  106, state: 6
+time:  107, state: 6
+time:  108, state: 6
+time:  109, state: 6
+time:  110, state: 6
+time:  111, state: 6
+time:  112, state: 6
+time:  113, state: 6
+time:  114, state: 6
+time:  115, state: 6
+time:  116, state: 6
+time:  117, state: 6
+time:  118, state: 6
+time:  119, state: 6
+time:  120, state: 6
+time:  121, state: 6
+time:  122, state: 6
+time:  123, state: 6
+time:  124, state: 6
+time:  125, state: 7
+time:  126, state: 7
+time:  127, state: 7
+time:  128, state: 7
+time:  129, state: 7
+time:  130, state: 7
+time:  131, state: 7
+time:  132, state: 7
+time:  133, state: 7
+time:  134, state: 7
+time:  135, state: 7
+time:  136, state: 7
+time:  137, state: 7
+time:  138, state: 7
+time:  139, state: 7
+time:  140, state: 7
+time:  141, state: 7
+time:  142, state: 7
+time:  143, state: 7
+time:  144, state: 7
+time:  145, state: 7
+time:  146, state: 7
+time:  147, state: 7
+time:  148, state: 7
+time:  149, state: 7
+time:  150, state: 7
+time:  151, state: 7
+time:  152, state: 7
+time:  153, state: 7
+time:  154, state: 7
+time:  155, state: 7
+time:  156, state: 7
+time:  157, state: 7
+time:  158, state: 7
+time:  159, state: 7
+time:  160, state: 7
+time:  161, state: 7
+time:  162, state: 7
+time:  163, state: 7
+time:  164, state: 7
+time:  165, state: 7
+time:  166, state: 7
+time:  167, state: 7
+time:  168, state: 7
+time:  169, state: 7
+time:  170, state: 7
+time:  171, state: 7
+time:  172, state: 7
+time:  173, state: 7
+time:  174, state: 7
+time:  175, state: 7
+time:  176, state: 7
+time:  177, state: 7
+time:  178, state: 7
+time:  179, state: 7
+time:  180, state: 7
+time:  181, state: 7
+time:  182, state: 7
+time:  183, state: 7
+time:  184, state: 7
+time:  185, state: 7
+time:  186, state: 7
+time:  187, state: 7
+time:  188, state: 7
+time:  189, state: 7
+time:  190, state: 7
+time:  191, state: 7
+time:  192, state: 7
+
+===================================================================================================
+Simulated as SPH2
+Opponent: Default Opponent 1
+
+http://zerorobotics.mit.edu/ide/vis/22960
+
+INITANGLE  / PANELANGLE / PANELRADIUS
+-1.0281942 / 0.39365536 / 0.43520522
+
+      X	, 	Y    ,     Z
+SPH1: 0 , 0.17990196, -0.2983586
+SPH2: 0 , -0.17990196, 0.2983586
+
+Results: 
+SPH1: 120 (Out of fuel, lost.)
+SPH2: 100 (Out of fuel, won.)
+
+time:    0, state: 0
+time:    1, state: 1
+time:    2, state: 1
+time:    3, state: 1
+time:    4, state: 1
+time:    5, state: 1
+time:    6, state: 1
+time:    7, state: 1
+time:    8, state: 1
+time:    9, state: 1
+time:   10, state: 1
+time:   11, state: 1
+time:   12, state: 1
+time:   13, state: 1
+time:   14, state: 1
+time:   15, state: 1
+time:   16, state: 1
+time:   17, state: 1
+time:   18, state: 1
+time:   19, state: 1
+time:   20, state: 1
+time:   21, state: 2
+time:   22, state: 2
+time:   23, state: 2
+time:   24, state: 2
+time:   25, state: 2
+time:   26, state: 2
+time:   27, state: 3
+time:   28, state: 4
+time:   28, (BLUE): angle to opponent: 174.279633
+time:   29, state: 4
+time:   29, (BLUE): angle to opponent: 172.783356
+time:   30, state: 4
+time:   30, (BLUE): angle to opponent: 171.390701
+time:   31, state: 4
+time:   31, (BLUE): angle to opponent: 168.292419
+time:   32, state: 4
+time:   32, (BLUE): angle to opponent: 166.528290
+time:   33, state: 4
+time:   33, (BLUE): angle to opponent: 170.125824
+time:   34, state: 4
+time:   34, (BLUE): angle to opponent: 170.092300
+time:   35, state: 4
+time:   35, (BLUE): angle to opponent: 159.379700
+time:   36, state: 4
+time:   36, (BLUE): ZAPPING ++++++++++++++++++++
+time:   37, state: 4
+time:   37, (BLUE): angle to opponent: 117.761391
+time:   38, state: 4
+time:   38, (BLUE): angle to opponent: 88.631882
+time:   39, state: 4
+time:   39, (BLUE): angle to opponent: 73.730453
+time:   40, state: 4
+time:   40, (BLUE): angle to opponent: 51.497910
+time:   41, state: 4
+time:   41, (BLUE): angle to opponent: 32.025848
+time:   42, state: 4
+time:   42, (BLUE): angle to opponent: 32.054913
+time:   43, state: 4
+time:   43, (BLUE): angle to opponent: 32.080128
+time:   44, state: 4
+time:   44, (BLUE): angle to opponent: 21.521008
+time:   45, state: 4
+time:   45, (BLUE): ZAPPING ++++++++++++++++++++
+time:   46, state: 4
+time:   46, (BLUE): ZAPPING ++++++++++++++++++++
+time:   47, state: 4
+time:   47, (BLUE): ZAPPING ++++++++++++++++++++
+time:   48, state: 4
+time:   48, (BLUE): ZAPPING ++++++++++++++++++++
+time:   49, state: 4
+time:   49, (BLUE): angle to opponent: 11.706172
+time:   50, state: 4
+time:   50, (BLUE): angle to opponent: 5.363630
+time:   51, state: 4
+time:   51, (BLUE): angle to opponent: 3.931986
+time:   52, state: 4
+time:   52, (BLUE): angle to opponent: 17.837973
+time:   53, state: 4
+time:   53, (BLUE): angle to opponent: 17.784559
+time:   54, state: 4
+time:   54, (BLUE): angle to opponent: 17.735746
+time:   55, state: 4
+time:   55, (BLUE): angle to opponent: 17.698084
+time:   56, state: 4
+time:   56, (BLUE): ZAPPING ++++++++++++++++++++
+time:   57, state: 4
+time:   57, (BLUE): ZAPPING ++++++++++++++++++++
+time:   58, state: 4
+time:   58, (BLUE): ZAPPING ++++++++++++++++++++
+time:   59, state: 4
+time:   59, (BLUE): ZAPPING ++++++++++++++++++++
+time:   60, state: 4
+time:   60, (BLUE): angle to opponent: 37.972687
+time:   61, state: 4
+time:   61, (BLUE): angle to opponent: 53.768829
+time:   62, state: 4
+time:   62, (BLUE): angle to opponent: 59.423668
+time:   63, state: 4
+time:   63, (BLUE): angle to opponent: 59.413376
+time:   64, state: 4
+time:   64, (BLUE): angle to opponent: 59.407928
+time:   65, state: 4
+time:   65, (BLUE): angle to opponent: 59.397060
+time:   66, state: 4
+time:   66, (BLUE): ZAPPING ++++++++++++++++++++
+time:   67, state: 4
+time:   68, state: 5
+time:   69, state: 5
+time:   70, state: 5
+time:   71, state: 5
+time:   72, state: 5
+time:   73, state: 5
+time:   74, state: 5
+time:   75, state: 6
+time:   76, state: 6
+time:   77, state: 6
+time:   78, state: 6
+time:   79, state: 6
+time:   80, state: 6
+time:   81, state: 6
+time:   82, state: 6
+time:   83, state: 6
+time:   84, state: 6
+time:   85, state: 6
+time:   86, state: 6
+time:   87, state: 6
+time:   88, state: 6
+time:   89, state: 6
+time:   90, state: 6
+time:   91, state: 6
+time:   92, state: 6
+time:   93, state: 6
+time:   94, state: 6
+time:   95, state: 6
+time:   96, state: 6
+time:   97, state: 6
+time:   98, state: 6
+time:   99, state: 6
+time:  100, state: 6
+time:  101, state: 7
+time:  102, state: 7
+time:  103, state: 7
+time:  104, state: 7
+time:  105, state: 7
+time:  106, state: 7
+time:  107, state: 7
+time:  108, state: 7
+time:  109, state: 7
+time:  110, state: 7
+time:  111, state: 7
+time:  112, state: 7
+time:  113, state: 7
+time:  114, state: 7
+time:  115, state: 7
+time:  116, state: 7
+time:  117, state: 7
+time:  118, state: 7
+time:  119, state: 7
+time:  120, state: 7
+time:  121, state: 7
+time:  122, state: 7
+time:  123, state: 7
+time:  124, state: 7
+time:  125, state: 7
+time:  126, state: 7
+time:  127, state: 7
+time:  128, state: 7
+time:  129, state: 7
+time:  130, state: 7
+time:  131, state: 7
+time:  132, state: 7
+time:  133, state: 7
+time:  134, state: 7
+time:  135, state: 7
+time:  136, state: 7
+time:  137, state: 7
+time:  138, state: 7
+time:  139, state: 7
+time:  140, state: 7
+time:  141, state: 7
+time:  142, state: 7
+time:  143, state: 7
+time:  144, state: 7
+time:  145, state: 7
+time:  146, state: 7
+time:  147, state: 7
+time:  148, state: 7
+time:  149, state: 7
+time:  150, state: 7
+time:  151, state: 7
+time:  152, state: 7
+time:  153, state: 7
+time:  154, state: 7
+time:  155, state: 7
+time:  156, state: 7
+time:  157, state: 7
+time:  158, state: 7
+time:  159, state: 7
+time:  160, state: 7
+time:  161, state: 7
+time:  162, state: 7
+time:  163, state: 7
+time:  164, state: 7
+time:  165, state: 7
+time:  166, state: 7
+time:  167, state: 7
+time:  168, state: 7
+time:  169, state: 7
+time:  170, state: 7
+time:  171, state: 7
+time:  172, state: 7
+time:  173, state: 7
+time:  174, state: 7
+time:  175, state: 7
+time:  176, state: 7
+time:  177, state: 7
+time:  178, state: 7
+time:  179, state: 7
+time:  180, state: 7
+time:  181, state: 7
+time:  182, state: 7
+time:  183, state: 7
+time:  184, state: 7
+time:  185, state: 7
+
+===================================================================================================
+
