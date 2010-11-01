@@ -28,7 +28,7 @@ float distance;
      
     if (state == 0) {
         attitude[0] = 0;
-        attitude[1] = 1;
+        attitude[1] = 1*getPanelSide();
         attitude[2] = 0;
  
         position[0] = .7*getPanelSide();

@@ -8,7 +8,7 @@
 
 #include "S_Target.c"
 
-if(fabs(otherState[0] - otherTargetX < .05 && getPercentChargeRemaining() > 0)){
+if(fabs(otherState[0] - otherTargetX < .05) && getPercentChargeRemaining() > 0){
 	state = STATE_WAIT;
 	break;
 }
@@ -20,9 +20,8 @@ if ((scanTarget == 1) && (tangentPoints[2] >= tangentPoints[1]))
 else if ((scanTarget == -1) && (tangentPoints[2] <= tangentPoints[0]))
  scanTarget = 1;
 
+VCopy(myState, target_pos);
 target_pos[0] = getPanelSide() * 0.7;
-target_pos[1] = myState[1];
-target_pos[2] = myState[2];
 
 SET_POSITION_TARGET(target_pos);
 

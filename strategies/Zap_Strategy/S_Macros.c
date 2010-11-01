@@ -54,7 +54,7 @@
 #define VMult(a, b, result)  Vfunc(4, (a), NULL, (result), (b))
 #define VDot(a, b)           mathVecInner((a), (b), 3)
 #define VDist(a, b)          Vfunc(6, (a), (b), NULL, 0)
-#define VCopy(a, result)     Vfunc(7, (a), NULL, (result), 0)
+#define VCopy(a, result)     memcpy((result), (a), sizeof(float)*3)
 #define VAngle(a, b)         Vfunc(8, (a), (b), NULL, 0)
 #define VPoint(a, b, result) Vfunc(9, (a), (b), (result), 0)
 
