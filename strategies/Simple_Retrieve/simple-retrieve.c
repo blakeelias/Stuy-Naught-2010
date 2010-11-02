@@ -38,8 +38,7 @@ float distance;
         ZRSetPositionTarget(position);
         ZRSetAttitudeTarget(attitude);
          
-        distance = Vfunc(6, myState, position, NULL, 0);
-        if (distance < 0.01)
+        if (Vfunc(6, myState, position, NULL, 0) < 0.01)
             state = 1;
     }
     if (state == 1) {
@@ -123,64 +122,46 @@ void RotateTarget(float * myState, float * pos)
  
 float Vfunc(int which, float * v1, float * v2, float * vresult, float scalar)
 {
-    int i;
-     
-    if (which == 0) // returns |v1|
-        return sqrt(Vfunc(5,v1,v1,NULL,0));
- 
-    if (which == 1) { // vresult = V1 + v2
-        for (i = 0; i < 3; ++i)
-            vresult[i] = v1[i] + v2[i];
-        return 0;
-    }
- 
-    if (which == 2) { // vresult = v1 - v2
-        for (i = 0; i < 3; ++i)
-            vresult[i] = v1[i] - v2[i];
-        return 0;
-    }
- 
-    if (which == 3) { // vresult = v1 / |v1|; if |v1| == 0, returns 0, else 1
-        float s = Vfunc(0,v1,NULL,NULL,0);
-        if (s == 0.0)
-            return 0.0;
-        Vfunc(4,v1,NULL,vresult,1.0/s);
-        return 1.0;
-    }
- 
-    if (which == 4) { // vresult = scalar * v1
-        for (i = 0; i < 3; ++i)
-            vresult[i] = scalar * v1[i];
-        return 0;
-    }
- 
-    if (which == 5) { // returns dot product: v1 * v2
-        float s2 = 0;
-        for (i = 0; i < 3; ++i)
-            s2 += v1[i] * v2[i];
-        return s2;
-    }
- 
-    if (which == 6) { // returns distance between v1 and v2
-        float v3[3];
-        Vfunc(2,v1,v2,v3,0);  // v3 = v1 - v2
-        return Vfunc(0,v3,NULL,NULL,0);
-    }
- 
-    if (which == 7) { // copies v1 to vresult
-        for (i = 0; i < 3; ++i)
-            vresult[i] = v1[i];
-        return 0;
-    }
- 
-    if (which == 8) { // angle between two vectors
-        float dot = Vfunc(5,v1,v2,NULL,0)/(Vfunc(0,v1,NULL,NULL,0)*Vfunc(0,v2,NULL,NULL,0));
-        return acos(dot)*180.0/3.14159265;
-    }
- 
-    if (which == 9) { // unit vector pointing from v1 toward v2
-        float v9[3];
-        Vfunc(2,v2,v1,v9,0);
-        return Vfunc(3,v9,NULL,vresult,0);
-    }
+
+	int i;
+
+	if (which == 2) { // vresult = v1 - v2
+        float vtemp[3];
+		Vfunc(4,v2,NULL,vtemp,-1);
+		mathVecAdd(vresult,v1,vtemp,3);
+		return 0;
+	}
+
+	if (which == 3) { // vresult = v1 / |v1|; if |v1| == 0, returns 0, else 1
+		memcpy(vresult, v1, sizeof(float)*3);
+		mathVecNormalize(vresult,3);
+		return 0;
+	}
+
+	if (which == 4) { // vresult = scalar * v1
+		for (i = 0; i < 3; ++i)
+			vresult[i] = scalar * v1[i];
+		return 0;
+	}
+
+	if (which == 5) { // returns dot product: v1 * v2
+		return mathVecInner(v1,v2,3);
+	}
+
+	if (which == 6) { // returns distance between v1 and v2
+		float v3[3];
+		Vfunc(2,v1,v2,v3,0);  // v3 = v1 - v2
+		return mathVecMagnitude(v3,3);
+	}
+
+	if (which == 8) { // angle between two vectors
+	    float dot = Vfunc(5,v1,v2,NULL,0)/(mathVecMagnitude(v1,3)*mathVecMagnitude(v2,3));
+	    return acos(dot)*180.0/3.14159265;
+	}
+
+	if (which == 9) { // unit vector pointing from v1 toward v2
+	    float v9[3];
+	    Vfunc(2,v2,v1,v9,0);
+	    return Vfunc(3,v9,NULL,vresult,0);
+	}
 }
