@@ -1,13 +1,5 @@
 /**
- * Code Size: 114%
- * Simulate with game variables, exits with status 20 / opponent 40
- * Around 20% fuel left, 88 seconds elapsed
- * 
- * http://zerorobotics.mit.edu/ide/vis/21959
- * http://zerorobotics.mit.edu/ide/vis/21963
- * http://zerorobotics.mit.edu/ide/vis/22006
- *
- * Gets panel in 55 seconds
+ * Code Size: 88%
  */
 
 int state;
