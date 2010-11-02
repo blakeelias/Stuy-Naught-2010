@@ -5,7 +5,6 @@
 #include "math_matrix.h"
 #include "spheres_constants.h"
 static int state;
-static float campPos[3];
 static float procvar[10];
 static int counter;
 static float vOther[3];
@@ -20,20 +19,6 @@ void ZRUser01(float *myState, float *otherState, float time)
 #define attitude (procvar+3)
 #define panel_location (procvar+6)
  
-float distance;
- 
-float to_opponent[3];
- 
-float stop[3];
- 
-stop[0] = 0;
-stop[1] = 0;
-stop[2] = 0;
- 
-campPos[0] = -.1 * getPanelSide();
-campPos[1] = 0;
-campPos[2] = 0;
- 
 memcpy(vOtherPrev, vOther, sizeof(float)*3); //original value copied to previous value
  
 memcpy(vOther, otherState+3, sizeof(float)*3); // this is set to the current value
@@ -41,24 +26,24 @@ memcpy(vOther, otherState+3, sizeof(float)*3); // this is set to the current val
 DEBUG(("%i \n", state));
  
 if (state == 0) { //Getting to Position
-    ZRSetPositionTarget(campPos);
-    Vfunc(9, myState, otherState, to_opponent, 0);
-    ZRSetAttitudeTarget(to_opponent);
+    position[0] = -.1 * getPanelSide();
+    position[1] = position[2] = 0;
+    ZRSetPositionTarget(position);
+    Vfunc(9, myState, otherState, attitude, 0);
+    ZRSetAttitudeTarget(attitude);
      
-    distance = Vfunc(6, myState, campPos, NULL, 0);
-     
-    if (distance < 0.01) {
+    if (Vfunc(6, myState, position, NULL, 0) < 0.01) {
         state++;
         }
     }
  
 if (state == 1) { //Zapping
-    ZRSetPositionTarget(campPos);
+    ZRSetPositionTarget(position);
  
-    Vfunc(9, myState, otherState, to_opponent, 0);
-    ZRSetAttitudeTarget(to_opponent);
+    Vfunc(9, myState, otherState, attitude, 0);
+    ZRSetAttitudeTarget(attitude);
          
-    if (fabs (Vfunc(8, myState+6, to_opponent, NULL, 0)) < 6.0) {
+    if (fabs (Vfunc(8, myState+6, attitude, NULL, 0)) < 6.0) {
         ZRRepel();
         }
      
@@ -85,8 +70,7 @@ if (state == 2) { //moving to panel circle
         ZRSetPositionTarget(position);
         ZRSetAttitudeTarget(attitude);
           
-        distance = Vfunc(6, myState, position, NULL, 0);
-        if (distance < 0.01)
+        if (Vfunc(6, myState, position, NULL, 0) < 0.01)
             state++;
     }
      
@@ -109,13 +93,13 @@ if (state == 4) { //get the panel
     }
  
 if (state == 5) {
-    ZRSetVelocityTarget(stop);
+    position[0] = position[1] = position[2] = 0;
+    ZRSetVelocityTarget(position);
     }
 }
 void ZRInit01()
 {
   state = (int) 0;
-  memset(campPos,0,sizeof(float)*3);
   memset(procvar,0,sizeof(float)*10);
   counter = (int) 0;
   memset(vOther,0,sizeof(float)*3);
