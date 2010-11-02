@@ -11,7 +11,6 @@ static int counter;
 static float vOther[3];
 static float vOtherPrev[3];
 static float Vfunc(int which, float * v1, float * v2, float * vresult, float scalar);
-static void CoastToAttitude(float* myState, float* attitudeTarget);
 static void RotateTarget(float * myState, float * pos);
  
 //User01: blakeelias Team: Stuy-Naught Project: kill-strategy
@@ -44,7 +43,7 @@ DEBUG(("%i \n", state));
 if (state == 0) { //Getting to Position
     ZRSetPositionTarget(campPos);
     Vfunc(9, myState, otherState, to_opponent, 0);
-    CoastToAttitude(myState, to_opponent);
+    ZRSetAttitudeTarget(to_opponent);
      
     distance = Vfunc(6, myState, campPos, NULL, 0);
      
@@ -168,57 +167,6 @@ float v9[3];
 Vfunc(2,v2,v1,v9,0);
 return Vfunc(3,v9,NULL,vresult,0);
 }
- 
-if (which == 10) { // rotated vector v1 towards v2 at scalar degrees
-float ang = scalar*3.14159265/180;
-float u[3];
-float c;
-float s;
-float rot[3];
-int k;
-mathVecNormalize(v1,3);
-mathVecNormalize(v2,3);
- 
-if (scalar > Vfunc(8,v1,v2,NULL,0)) {
-return 1;
-}
- 
-c = cosf(ang);
-s = sinf(ang);
-mathVecCross(u,v1,v2);
-mathVecNormalize(u,3);
- 
-for(k=0;k<2;k++) {
-if ((k == 1) && (fabs(Vfunc(8,rot,v1,NULL,0)) > fabs(Vfunc(8,v1,v2,NULL,0)) || fabs(Vfunc(8,rot,v2,NULL,0)) > fabs(Vfunc(8,v1,v2,NULL,0)))) {
-c = cosf(-1*ang);
-s = sinf(-1*ang);
-}
-rot[0] = (v1[0]*(c + u[0] * u[0] * (1-c)) + v1[1]*(u[0] * u[1] * (1-c) - u[2] * s) + v1[2]*(u[0] * u[2] * (1-c) + u[1] * s));
-rot[1] = (v1[0]*(u[0] * u[1] * (1-c) + u[2] * s) + v1[1]*(c + u[1] * u[1] * (1-c)) + v1[2]*(u[1] * u[2] * (1-c) - u[0] * s));
-rot[2] = (v1[0]*(u[0] * u[2] * (1-c) - u[1] * s) + v1[1]*(u[1] * u[2] * (1-c) + u[0] * s) + v1[2]*(c + u[2] * u[2] * (1-c)));
-}
- 
-memcpy(vresult,rot,sizeof(float)*3);
-return 0;
-}
-}
- 
-static void CoastToAttitude(float* myState, float* attitudeTarget)
-{
-#define VRotate(vector, angle, target, result) Vfunc(10, (vector), (target), (result), (angle))
-#define VAng(a1, a2) Vfunc(8, (a1), (a2), NULL, 0)
-   
-#define COASTING_VELOCITY 15
-   
- if (VAng(&myState[6], attitudeTarget) < COASTING_VELOCITY) {
-  ZRSetAttitudeTarget(attitudeTarget);
-  }
- else
- {
-  float intermediate[3];
-  VRotate(&myState[6], COASTING_VELOCITY, attitudeTarget, intermediate);
-  ZRSetAttitudeTarget(intermediate);
- }
 }
  
 static void RotateTarget(float * myState, float * pos)
