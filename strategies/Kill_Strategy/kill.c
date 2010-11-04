@@ -43,9 +43,10 @@ if (state == 1) { //Zapping
         }
      
     // Wait for them to run out of fuel (constant velocity)
-    if ((Vfunc(6, vOther, vOtherPrev, NULL, 0)) == 0.0) {
+    if ((Vfunc(6, vOther, vOtherPrev, NULL, 0)) == 0.0)
         counter++;
-        }
+    else
+        counter = 0;
           
     DEBUG(("Counter = %i \n", counter));
   
