@@ -11,7 +11,7 @@ SET_POSITION_TARGET(&panelState[4]);
 
 VCopy(panelState, target);
 target[0] = 0;
-VUnit(target, target);
+VUnit(target);
 
 SET_ATTITUDE_TARGET(target);
 

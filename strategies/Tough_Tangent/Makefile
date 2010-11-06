@@ -1,12 +1,17 @@
-all: out.c out2.c
+.PHONY: all clean out1.c out2.c out3.c
 
-out.c: main.c
-	cpp -ansi < main.c | grep -v "#" > out.c
+all: out1.c out2.c out3.c
+
+out1.c: main.c
+	cpp -ansi < $< | grep -v -e "^#" -e "^//" -e "^$$" > $@
 
 out2.c: T_Coast.c
-	cpp -ansi < T_Coast.c | grep -v "#" > out2.c
+	cpp -ansi < $< | grep -v -e "^#" -e "^//" -e "^$$" > $@
 
-.PHONY: clean
+out3.c: T_Vfunc.c
+	cpp -ansi < $< | grep -v -e "^#" -e "^//" -e "^$$" > $@
+
 clean:
-	rm out.c out2.c
+	rm out1.c out2.c out3.c
+
 
