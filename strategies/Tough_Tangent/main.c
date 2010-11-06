@@ -30,5 +30,8 @@ void ZRUser(float* myState, float* otherState, float time)
   case STATE_TOSTATION:
 #include "S_Station.c"
    break;
+  case STATE_KILL:
+#include "S_Kill.c"
+   break;
  }
 }

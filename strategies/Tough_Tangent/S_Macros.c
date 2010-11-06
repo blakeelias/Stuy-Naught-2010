@@ -21,13 +21,13 @@
 //The satellite will always be drifting away from its position.
 //If the satellite is less than this number of meters away from
 //its target position, it will tolerate the error.
-#define ERROR_TOLERANCE         0.1
+#define ERROR_TOLERANCE         0.2
 
 //How close is "close to my target" for CoastToTarget?
 #define CLOSE                   0.1
 
 //Magnitude of the set velocity with CoastToTarget
-#define MAGNITUDE 0.03
+#define MAGNITUDE               0.03
 
 //Add more states as necessary
 #define STATE_INIT        0
@@ -35,6 +35,7 @@
 #define STATE_SEARCHING   2
 #define STATE_TOPANEL     3
 #define STATE_TOSTATION   4
+#define STATE_KILL        5
 
 
 
