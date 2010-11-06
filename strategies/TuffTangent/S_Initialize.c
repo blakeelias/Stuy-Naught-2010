@@ -1,3 +1,3 @@
 //Code to initialize the sphere, then search for the panel...
 
-state = STATE_PREP;
+state = STATE_KILL;

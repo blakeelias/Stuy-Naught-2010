@@ -9,5 +9,6 @@ VMult(target, 0.1, target);
 
 CoastToTarget(myState, target);
 
-ZRRepel();
+if (V_Angle(myState, otherState) < 6.0f)
+ ZRRepel();
 
