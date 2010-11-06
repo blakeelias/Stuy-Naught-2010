@@ -5,7 +5,9 @@
 #define SET_POSITION_TARGET ZRSetPositionTarget
 #define SET_ATTITUDE_TARGET ZRSetAttitudeTarget
 
-//Use of SEARCH_DISTANCE has been discontinued.
+//Use of SEARCH_DISTANCE has been discontinued and will be
+//removed soon.
+#define SEARCH_DISTANCE         0.8
 
 //Rotation speed when searching for the panel. The satellite
 //controls its rotation by setting its attitude target to a
@@ -45,7 +47,7 @@
 #define VSub(a, b, result)   Vfunc(2, (a), (b), (result), 0)
 #define VUnit(a)             mathVecNormalize((a), 3)
 #define VMult(a, b, result)  Vfunc(4, (a), NULL, (result), (b))
-#define VDot(a, b)           mathVecInner((a), (b))
+#define VDot(a, b)           mathVecInner((a), (b), 3)
 #define VDist(a, b)          Vfunc(6, (a), (b), NULL, 0)
 #define VCopy(a, result)     memcpy((result), (a), 3 * sizeof(float))
 #define VAngle(a, b)         Vfunc(8, (a), (b), NULL, 0)

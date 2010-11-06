@@ -1,12 +1,3 @@
-/**
- * Code size: 129%
- * Wins with 35% fuel left
- *
- * http://zerorobotics.mit.edu/ide/vis/21977
- * http://zerorobotics.mit.edu/ide/vis/21982
- *
- * Gets panel in 55, 62 seconds
- */
 
 #include "S_Macros.c"
 #include "S_Globals.c"
