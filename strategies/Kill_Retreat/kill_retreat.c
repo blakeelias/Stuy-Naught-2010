@@ -84,37 +84,47 @@ if (state == 3) { // Retreating to panel, they are alive
         position[1] = 0;
         position[2] = 0;
     }
-    Vfunc(2, position, myState, position, 0);
-    Vfunc(4, position, NULL, position, 0.02);
-    ZRSetVelocityTarget(position);
      
-    if (mathVecMagnitude(position, 3) * 50 > 0.4) { //charge
+    if (Vfunc(6, position, myState, NULL, 0) > 0.5) { //charge, move towards panel
         DEBUG(("time: %3.0f, SPH%d: charging\n", time, getPanelSide() == 1 ? 1 : 2));
+        ZRSetPositionTarget(position);
         attitude[0] = getPanelSide();
         attitude[1] = 0;
         attitude[2] = 0;
         ZRSetAttitudeTarget(attitude);
     }
-    else { //zap him back //if (otherRepelling())
+    else { // slow down, zap him back
+        // turn towards opponent
         Vfunc(9, myState, otherState, attitude, 0);
         ZRSetAttitudeTarget(attitude);
+         
+        // velocity = (myState - position) * .05
+        Vfunc(2, position, myState, position, 0);
+        Vfunc(4, position, NULL, position, 0.05);
+        ZRSetVelocityTarget(position);
+        Vfunc(4, position, NULL, position, 1/0.05);
+         
         // Zap once we see them
-        if (fabs (Vfunc(8, myState+6, attitude, NULL, 0)) < 6.0) {
-            ZRRepel();
-            DEBUG(("time: %3.0f, SPH%d: zapping\n", time, getPanelSide() == 1 ? 1 : 2));
+        if (getPercentChargeRemaining() >= 10) {
+            if (fabs (Vfunc(8, myState+6, attitude, NULL, 0)) < 6.0) {
+                ZRRepel();
+                DEBUG(("time: %3.0f, SPH%d: zapping\n", time, getPanelSide() == 1 ? 1 : 2));
+            }
+            else
+                DEBUG(("time: %3.0f, SPH%d: turning; angle to opponent: %3.2f\n", time, getPanelSide() == 1 ? 1 : 2, fabs (Vfunc(8, myState+6, attitude, NULL, 0))));
         }
-        else
-            DEBUG(("time: %3.0f, SPH%d: turning; angle to opponent: %3.2f\n", time, getPanelSide() == 1 ? 1 : 2, fabs (Vfunc(8, myState+6, attitude, NULL, 0))));
     }
      
-    if (mathVecMagnitude(position, 3) * 50 < 0.1 && isPanelFound())
-        state = 5;
-    else if (mathVecMagnitude(position, 3) * 50 < 0.01) {
-        attitude[0] = 0;
-        attitude[1] = getPanelSide();
-        attitude[2] = 0;
-        ZRSetAttitudeTarget(attitude);
-        state = 4;
+    if (Vfunc(6, position, myState, NULL, 0) < 0.01) {
+        if (isPanelFound())
+            state = 5;
+        else {
+            attitude[0] = 0;
+            attitude[1] = getPanelSide();
+            attitude[2] = 0;
+            ZRSetAttitudeTarget(attitude);
+            state = 4;
+        }
     }
 }
  
