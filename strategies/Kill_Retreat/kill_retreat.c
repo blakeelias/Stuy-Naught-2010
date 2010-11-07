@@ -52,7 +52,7 @@ if (state == 1) { //Zapping
   
     if (counter >= 15)
         state = 2;
-    else if (getPercentFuelRemaining() < 50)
+    else if (getPercentFuelRemaining() < 20)
         state = 3;
     }
   
@@ -78,54 +78,16 @@ if (state == 2) { //Moving to panel circle, they're dead
  
 if (state == 3) { // Retreating to panel, they are alive
     if (isPanelFound())
-        getPanelState(position);
+        state = 5;
     else {
         position[0] = .7*getPanelSide();
         position[1] = 0;
         position[2] = 0;
-    }
-     
-    if (Vfunc(6, position, myState, NULL, 0) > 0.5) { //charge, move towards panel
-        DEBUG(("time: %3.0f, SPH%d: charging\n", time, getPanelSide() == 1 ? 1 : 2));
         ZRSetPositionTarget(position);
-        attitude[0] = getPanelSide();
-        attitude[1] = 0;
-        attitude[2] = 0;
-        ZRSetAttitudeTarget(attitude);
     }
-    else { // slow down, zap him back
-        // turn towards opponent
-        Vfunc(9, myState, otherState, attitude, 0);
-        ZRSetAttitudeTarget(attitude);
-         
-        // velocity = (myState - position) * .05
-        Vfunc(2, position, myState, position, 0);
-        Vfunc(4, position, NULL, position, 0.05);
-        ZRSetVelocityTarget(position);
-        Vfunc(4, position, NULL, position, 1/0.05);
-         
-        // Zap once we see them
-        if (getPercentChargeRemaining() >= 10) {
-            if (fabs (Vfunc(8, myState+6, attitude, NULL, 0)) < 6.0) {
-                ZRRepel();
-                DEBUG(("time: %3.0f, SPH%d: zapping\n", time, getPanelSide() == 1 ? 1 : 2));
-            }
-            else
-                DEBUG(("time: %3.0f, SPH%d: turning; angle to opponent: %3.2f\n", time, getPanelSide() == 1 ? 1 : 2, fabs (Vfunc(8, myState+6, attitude, NULL, 0))));
-        }
-    }
-     
-    if (Vfunc(6, position, myState, NULL, 0) < 0.01) {
-        if (isPanelFound())
-            state = 5;
-        else {
-            attitude[0] = 0;
-            attitude[1] = getPanelSide();
-            attitude[2] = 0;
-            ZRSetAttitudeTarget(attitude);
-            state = 4;
-        }
-    }
+ 
+    if (Vfunc(6, position, myState, NULL, 0) < 0.01)
+        state = 4;
 }
  
 if (state == 4) { //Finding panel
