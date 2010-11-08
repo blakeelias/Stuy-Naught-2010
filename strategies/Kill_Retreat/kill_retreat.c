@@ -12,7 +12,7 @@ static int state;
 static float Vfunc(int which, float * v1, float * v2, float * vresult, float scalar);
 static void RotateTarget(float * myState, float * pos);
  
-//User01: blakeelias Team: Stuy-Naught Project: kill-retreat
+//User01: blakeelias Team: Stuy-Naught Project: Final-Ground
 void ZRUser01(float *myState, float *otherState, float time)
 {
 #define position procvar
@@ -71,7 +71,7 @@ if (state == 2) { //Moving to panel circle, they're dead
         ZRSetPositionTarget(position);
         ZRSetAttitudeTarget(attitude);
            
-        if (Vfunc(6, myState, position, NULL, 0) < 0.01)
+        if (Vfunc(6, myState, position, NULL, 0) < 0.03)
             state = 4;
     }
 }
@@ -86,7 +86,7 @@ if (state == 3) { // Retreating to panel, they are alive
         ZRSetPositionTarget(position);
     }
  
-    if (Vfunc(6, position, myState, NULL, 0) < 0.01)
+    if (Vfunc(6, position, myState, NULL, 0) < 0.03)
         state = 4;
 }
  
