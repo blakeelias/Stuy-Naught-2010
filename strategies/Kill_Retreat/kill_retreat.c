@@ -98,7 +98,9 @@ if (state == 4) { //Finding panel
           
 if (state == 5) { //Get the panel
         getPanelState(position);
-        Vfunc(9, myState, position, attitude, 0);
+        attitude[0] = 0.7*getPanelSide();
+        attitude[1] = attitude[2] = 0;
+        Vfunc(9, attitude, position, attitude, 0);
         ZRSetAttitudeTarget(attitude);
         ZRSetPositionTarget(position);
         if (iHavePanel())
