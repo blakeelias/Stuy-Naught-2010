@@ -1,23 +1,26 @@
 #include "S_Macros.c"
 
 //Coasts to a target, in absolute coordinates.
+//Arguments: myState (of ZRUser), target, target velocity
 
 void CoastToTarget(float* myPos, float* coastTarget, float magnitude)
 {
  float temp[3];
+ float temp2[3];
 
  VSub(coastTarget, myPos, temp);
 
- if (VLen(temp) < CLOSE)
+ if (VLen(temp) < (magnitude * 2))
  {
-  SET_POSITION_TARGET(coastTarget);
+  ZRSetPositionTarget(coastTarget);
  }
  else
  {
   VUnit(temp);
   VMult(temp, magnitude, temp);
 
-  ZRSetVelocityTarget(temp);
+  if (VDist(temp, &myPos[3]) < 0.1)
+   ZRSetVelocityTarget(temp);
  }
 }
 
