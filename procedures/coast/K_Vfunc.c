@@ -1,4 +1,4 @@
-#include "S_Macros.c"
+#include "K_Macros.h"
 
 float Vfunc(int which, float* v1, float* v2, float* vresult, float scalar)
 {

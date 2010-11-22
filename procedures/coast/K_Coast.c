@@ -1,4 +1,4 @@
-#include "S_Macros.c"
+#include "K_Macros.h"
 
 //Coasts to a target, in absolute coordinates.
 //Arguments: myState (of ZRUser), target, target velocity
