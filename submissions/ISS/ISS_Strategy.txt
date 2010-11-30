@@ -1,0 +1,7 @@
+ISS Strategy:
+
+1.  Our satellite will stay near the sun in the beginning of the game, running an offensive strategy by repelling our opponent for some amount of time.
+2.  Eventually we leave the sun and go towards our panel to search.
+3.  Once we find and dock to the panel, we will either
+    A) Sit still for the rest of the game (most likely), or
+    B) Return to an offensive strategy (repelling the opponent) if it is necessary and we have enough fuel.
