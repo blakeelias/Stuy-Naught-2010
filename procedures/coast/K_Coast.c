@@ -6,7 +6,7 @@
 void CoastToTarget(float* myPos, float* coastTarget, float magnitude)
 {
  float temp[3];
- float temp2[3];
+ if (magnitude > 0.04) magnitude = 0.04;
 
  VSub(coastTarget, myPos, temp);
 
@@ -19,7 +19,7 @@ void CoastToTarget(float* myPos, float* coastTarget, float magnitude)
   VUnit(temp);
   VMult(temp, magnitude, temp);
 
-  if (VDist(temp, &myPos[3]) > 0.05)
+  if (VDist(temp, &myPos[3]) > 0.02)
    ZRSetVelocityTarget(temp);
  }
 }
