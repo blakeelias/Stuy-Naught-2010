@@ -53,5 +53,7 @@
 #define VCopy(a, result)     memcpy((result), (a), 3 * sizeof(float))
 #define VAngle(a, b)         Vfunc(8, (a), (b), NULL, 0)
 #define VPoint(a, b, result) Vfunc(9, (a), (b), (result), 0)
+#define Deg2Rad(Deg) (Deg*PI/180.0)
+#define Rad2Deg(Rad) (Rad*180.0/PI)
 
 
