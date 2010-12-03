@@ -10,7 +10,7 @@ void CoastToTarget(float* myPos, float* coastTarget, float magnitude)
 
  VSub(coastTarget, myPos, temp);
 
- if (VLen(temp) < (magnitude * 2))
+ if (VLen(temp) < (SQ(VLen(&myPos[3])) * 50.0 + 0.08))
  {
   ZRSetPositionTarget(coastTarget);
  }
