@@ -11,6 +11,7 @@ static float vOther[3];
 static int state;
 static float Vfunc(int which, float * v1, float * v2, float * vresult, float scalar);
 static void RotateTarget(float * myState, float * pos);
+static void CoastToTarget(float* myPos, float* coastTarget, float magnitude);
  
 //User01: blakeelias Team: Stuy-Naught Project: Kill-Retreat
 void ZRUser01(float *myState, float *otherState, float time)
@@ -37,7 +38,7 @@ if (state == 1) { //Zapping
     mathVecNormalize(position, 3);
     Vfunc(4, position, NULL, position, 0.1);
   
-    ZRSetPositionTarget(position);
+    CoastToTarget(myState, position, 0.04);
       
     // Face the opponent
     Vfunc(9, myState, otherState, attitude, 0);
@@ -69,7 +70,7 @@ if (state == 2) { //Moving to panel circle, they're dead
         position[1] = 0;
         position[2] = 0;
     
-        ZRSetPositionTarget(position);
+        CoastToTarget(myState, position, 0.04);
         ZRSetAttitudeTarget(attitude);
             
         if (Vfunc(6, myState, position, NULL, 0) < 0.03)
@@ -84,7 +85,7 @@ if (state == 3) { // Retreating to panel, they are alive
         position[0] = .7*getPanelSide();
         position[1] = 0;
         position[2] = 0;
-        ZRSetPositionTarget(position);
+        CoastToTarget(myState, position, 0.04);
     }
   
     if (Vfunc(6, position, myState, NULL, 0) < 0.03)
@@ -105,7 +106,7 @@ if (state == 5) { //Get the panel
         attitude[1] = attitude[2] = 0;
         Vfunc(9, attitude, position, attitude, 0);
         ZRSetAttitudeTarget(attitude);
-        ZRSetPositionTarget(position);
+        CoastToTarget(myState, position, 0.04);
         if (iHavePanel())
             state++;
         }
@@ -214,4 +215,22 @@ static void RotateTarget(float * myState, float * pos)
     //printf( " out-of-plane: %5.2f\n",asin(current_att[0])*180/3.14159);
   
     ZRSetAttitudeTarget(target_att);
+}
+ 
+static void CoastToTarget(float* myPos, float* coastTarget, float magnitude)
+{
+ float temp[3];
+ if (magnitude > 0.04) magnitude = 0.04;
+ Vfunc(2, (coastTarget), (myPos), (temp), 0);
+ if (mathVecMagnitude((temp), 3) < (mathSquare(mathVecMagnitude((&myPos[3]), 3)) * 50.0 + 0.08))
+ {
+  ZRSetPositionTarget(coastTarget);
+ }
+ else
+ {
+  mathVecNormalize((temp), 3);
+  Vfunc(4, (temp), NULL, (temp), (magnitude));
+  if (Vfunc(6, (temp), (&myPos[3]), NULL, 0) > 0.02)
+   ZRSetVelocityTarget(temp);
+ }
 }
