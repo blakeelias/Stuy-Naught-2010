@@ -25,7 +25,7 @@ memcpy(vOtherPrev, vOther, sizeof(float)*3); //original value copied to previous
 memcpy(vOther, otherState+3, sizeof(float)*3); // this is set to the current value
  
 // Wait for them to run out of fuel (constant velocity)
-if ((Vfunc(6, vOther, vOtherPrev, NULL, 0)) == 0.0)  // <= 0.001
+if ((Vfunc(6, vOther, vOtherPrev, NULL, 0)) <= 0.01)
     counter++;
 else
     counter = 0;
@@ -51,12 +51,19 @@ if (state == 1) { //Zapping
      
            
     //DEBUG(("Counter = %i \n", counter));
-   
-    if (counter >= 15 || time > 100)
-        state = 2;
-    else if (getPercentFuelRemaining() < 20)
-        state = 3;
+ 
+ 
+    if(iHavePanel()) {
+        if (counter >= 15 || getPercentFuelRemaining() < 10)
+            state = 6;
     }
+    else {
+        if (counter >= 15 || time > 100)
+            state = 2;
+        else if (getPercentFuelRemaining() < 20)
+            state = 3;
+    }
+}
    
 if (state == 2) { //Moving to panel circle, they're dead
     if (isPanelFound())
