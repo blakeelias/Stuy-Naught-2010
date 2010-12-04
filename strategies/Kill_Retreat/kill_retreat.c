@@ -22,9 +22,15 @@ void ZRUser01(float *myState, float *otherState, float time)
 memcpy(vOtherPrev, vOther, sizeof(float)*3); //original value copied to previous value
    
 memcpy(vOther, otherState+3, sizeof(float)*3); // this is set to the current value
+ 
+// Wait for them to run out of fuel (constant velocity)
+if ((Vfunc(6, vOther, vOtherPrev, NULL, 0)) == 0.0)  // <= 0.001
+    counter++;
+else
+    counter = 0;
    
 DEBUG(("time: %3.0f, SPH%d: state %i\n", time, getPanelSide() == 1 ? 1 : 2, state));
-  
+ 
 if (state == 1) { //Zapping
     // Get between the opponent and the sun
     memcpy(position, otherState, sizeof(float)*3);
@@ -41,12 +47,7 @@ if (state == 1) { //Zapping
     if (fabs (Vfunc(8, myState+6, attitude, NULL, 0)) < 6.0) {
         ZRRepel();
         }
-      
-    // Wait for them to run out of fuel (constant velocity)
-    if ((Vfunc(6, vOther, vOtherPrev, NULL, 0)) == 0.0)
-        counter++;
-    else
-        counter = 0;
+     
            
     //DEBUG(("Counter = %i \n", counter));
    
@@ -94,6 +95,8 @@ if (state == 4) { //Finding panel
     RotateTarget(myState, position);
         if (isPanelFound())
             state = 5;
+        if (iHavePanel())
+            state = 6;
     }
            
 if (state == 5) { //Get the panel
@@ -108,6 +111,8 @@ if (state == 5) { //Get the panel
         }
    
 if (state == 6) { //Stop
+    if (counter < 15)
+        state = 1;
     position[0] = position[1] = position[2] = 0;
     ZRSetVelocityTarget(position);
         }
